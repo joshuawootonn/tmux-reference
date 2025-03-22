@@ -4,11 +4,36 @@ import "../styles/global.css"
 ---
 
 <Layout>
+  <main class="prose mx-auto py-10 px-4 max-w-4xl">
+    <h1 class="text-4xl font-bold mb-8 text-center">TMUX Cheat Sheet</h1>
+    
+    <div class="mb-8">
+      <p class="text-lg text-gray-600">Prefix key: <code class="bg-gray-100 px-2 py-1 rounded">Ctrl+b</code></p>
+      <p class="text-sm text-gray-500">Press the prefix key before any command below</p>
+    </div>
 
-<main class="prose mx-auto py-10">
- <h1>
-      TMUX cheat
-</h1> 
-</main>
+    <section >
+      <h2 >Sessions</h2>
+          <ul class="space-y-2">
+        <li>Create new session  <ul>
+          <li><code>tmux new -s session_name</code></li>
+
+        </ul> </li>
+            <li>List all sessions - <code>tmux ls</code></li>
+            <li>Attach to session by name - <code>tmux attach -t session_name</code></li>
+            <li>Kill session - <code>tmux kill-session -t session_name</code></li>
+          </ul>
+        </div>
+          <h3 class="font-semibold mb-2">Within tmux</h3>
+          <ul class="space-y-2">
+            <li>Detach from session - <code>d</code></li>
+            <li>List sessions - <code>s</code></li>
+            <li>Rename current session - <code>$</code></li>
+            <li>Switch to previous session - <code>(</code></li>
+            <li>Switch to next session - <code>)</code></li>
+          </ul>
+    </section>
+
+  </main>
 </Layout>
 
