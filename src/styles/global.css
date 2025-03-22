@@ -2,49 +2,49 @@
 @plugin "@tailwindcss/typography";
 
 :root {
-  --primary-color: #2d3748;
-  --secondary-color: #4a5568;
-  --accent-color: #4299e1;
+	--primary-color: #2d3748;
+	--secondary-color: #4a5568;
+	--accent-color: #4299e1;
 }
 
 body {
-  background-color: #f7fafc;
-  color: var(--primary-color);
+	background-color: #f7fafc;
+	color: var(--primary-color);
 }
 
 code {
-  background-color: #f1f5f9;
-  padding: 0.2em 0.4em;
-  border-radius: 0.25rem;
-  font-family: 'SF Mono', 'Consolas', monospace;
+	background-color: #f1f5f9;
+	padding: 0.2em 0.4em;
+	border-radius: 0.25rem;
+	font-family: "SF Mono", "Consolas", monospace;
 }
 
 .prose code {
-  background-color: #f1f5f9;
-  padding: 0.2em 0.4em;
-  border-radius: 0.25rem;
-  font-size: 0.875em;
+	background-color: #f1f5f9;
+	padding: 0.2em 0.4em;
+	border-radius: 0.25rem;
+	font-size: 0.875em;
 }
 
 .prose pre {
-  background-color: #1a202c;
-  color: #e2e8f0;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  overflow-x: auto;
+	background-color: #1a202c;
+	color: #e2e8f0;
+	padding: 1rem;
+	border-radius: 0.5rem;
+	overflow-x: auto;
 }
 
 .prose pre code {
-  background-color: transparent;
-  padding: 0;
-  color: inherit;
+	background-color: transparent;
+	padding: 0;
+	color: inherit;
 }
 
 .prose a {
-  color: var(--accent-color);
-  text-decoration: none;
+	color: var(--accent-color);
+	text-decoration: none;
 }
 
 .prose a:hover {
-  text-decoration: underline;
+	text-decoration: underline;
 }
