@@ -1,5 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Terminal from "../components/Terminal.astro";
+import Tmux from "../components/Tmux.astro";
+import Keyboard from "../components/Keyboard.astro";
 import "../styles/global.css";
 ---
 
@@ -18,15 +21,25 @@ import "../styles/global.css";
 
     <section>
       <h2>Sessions</h2>
-      <ul class="space-y-2">
-        <li>
-          Create new session <ul>
-            <li><code>tmux new -s session_name</code></li>
+      <ul class="space-y-2 not-prose w-100">
+        <li class="flex justify-between items-start">
+          <div>Start new session</div>
+          <ul class="not-prose">
+            <li>
+              <Terminal>tmux</Terminal>
+            </li>
+            <li>
+              <Terminal>tmux new</Terminal>
+            </li>
+            <li>
+              <Terminal>tmux new-session</Terminal>
+            </li>
+            <li><Tmux>new</Tmux></li>
           </ul>
-        </li>List all sessions - <code>tmux ls</code>
+        </li>
       </ul>
 
-      s <li>
+      <li>
         Attach to session by name - <code>tmux attach -t session_name</code>
       </li>
       <li>Kill session - <code>tmux kill-session -t session_name</code></li>
@@ -41,14 +54,3 @@ import "../styles/global.css";
     <li>Switch to next session - <code>)</code></li>
   </ul>
 </Layout>
-
-<div class="bg-white p-4 rounded-lg shadow">
-  <ul class="space-y-2">
-    <li><code>t</code> - Show clock</li>
-    <li><code>?</code> - List all key bindings</li>
-    <li><code>:</code> - Enter command mode</li>
-    <li><code>z</code> - Toggle pane zoom</li>
-    <li><code>!</code> - Break current pane into window</li>
-    <li><code>q</code> - Show pane numbers</li>
-  </ul>
-</div>
