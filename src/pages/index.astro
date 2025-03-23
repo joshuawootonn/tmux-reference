@@ -7,12 +7,20 @@ import "../styles/global.css";
 ---
 
 <Layout>
-  <main class="prose mx-auto py-10 px-4 max-w-4xl">
-    <h1 class="text-4xl font-bold mb-8 text-center">TMUX Cheat Sheet</h1>
+  <main
+    class:list={[
+      "prose mx-auto px-4 py-10",
+      "prose-ul:my-0",
+      "prose-li:list-none prose-li:first:mt-0",
+      "prose-code:after:hidden prose-code:font-normal",
+      "prose-kbd:font-mono prose-kbd:bg-gray-100 prose-kbd:p-[0.2em_0.4em] prose-kbd:rounded-xs prose-kbd:text-sm",
+    ]}
+  >
+    <h1 class="mb-8 text-4xl font-bold">TMUX Cheat Sheet</h1>
 
     <div class="mb-8">
       <p class="text-lg text-gray-600">
-        Prefix key: <code class="bg-gray-100 px-2 py-1 rounded">Ctrl+b</code>
+        Prefix key: <code class="rounded bg-gray-100 px-2 py-1">Ctrl+b</code>
       </p>
       <p class="text-sm text-gray-500">
         Press the prefix key before any command below
@@ -21,36 +29,39 @@ import "../styles/global.css";
 
     <section>
       <h2>Sessions</h2>
-      <ul class="space-y-2 not-prose w-100">
-        <li class="flex justify-between items-start">
-          <div>Start new session</div>
-          <ul class="not-prose">
-            <li>
-              <Terminal>tmux</Terminal>
-            </li>
-            <li>
-              <Terminal>tmux new</Terminal>
-            </li>
-            <li>
-              <Terminal>tmux new-session</Terminal>
-            </li>
-            <li><Tmux>new</Tmux></li>
-          </ul>
-        </li>
-      </ul>
-
-      <li>
-        Attach to session by name - <code>tmux attach -t session_name</code>
-      </li>
-      <li>Kill session - <code>tmux kill-session -t session_name</code></li>
+      <div class="grid grid-cols-1 sm:grid-cols-2">
+        <div>Start new session</div>
+        <ul>
+          <li>
+            <Terminal>tmux</Terminal>
+          </li>
+          <li>
+            <Terminal>tmux new</Terminal>
+          </li>
+          <li>
+            <Terminal>tmux new-session</Terminal>
+          </li>
+          <li><Tmux>new</Tmux></li>
+        </ul>
+        <div>Rename session</div>
+        <ul>
+          <li>
+            <Keyboard>$</Keyboard>
+          </li>
+        </ul>
+        <div>Start new session by name</div>
+        <ul>
+          <li>
+            <Terminal>tmux new-session -s NAME</Terminal>
+          </li>
+        </ul>
+        <div>Start or attach to session by name</div>
+        <ul>
+          <li>
+            <Terminal>tmux new-session -A -s NAME</Terminal>
+          </li>
+        </ul>
+      </div>
     </section>
   </main>
-  <h3 class="font-semibold mb-2">Within tmux</h3>
-  <ul class="space-y-2">
-    <li>Detach from session - <code>d</code></li>
-    <li>List sessions - <code>s</code></li>
-    <li>Rename current session - <code>$</code></li>
-    <li>Switch to previous session - <code>(</code></li>
-    <li>Switch to next session - <code>)</code></li>
-  </ul>
 </Layout>
