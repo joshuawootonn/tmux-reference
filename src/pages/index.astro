@@ -7,61 +7,74 @@ import "../styles/global.css";
 ---
 
 <Layout>
-  <main
+  <div
     class:list={[
-      "prose mx-auto px-4 py-10",
+      "prose mx-auto w-full px-4 py-10",
+      "prose-headings:font-(family-name:--font-heading)",
+      "prose-h1:text-6xl",
+      "prose-h2:text-5xl",
+      "prose-h1:text-6xl",
       "prose-ul:my-0",
       "prose-li:list-none prose-li:first:mt-0",
-      "prose-code:after:hidden prose-code:font-normal",
+      "prose-code:after:hidden prose-code:font-normal prose-code:before:hidden",
       "prose-kbd:font-mono prose-kbd:bg-gray-100 prose-kbd:p-[0.2em_0.4em] prose-kbd:rounded-xs prose-kbd:text-sm",
     ]}
   >
-    <h1 class="mb-8 text-4xl font-bold">TMUX Cheat Sheet</h1>
+    <main>
+      <h1 class="mb-8 text-4xl font-bold">TMUX Cheat Sheet</h1>
 
-    <div class="mb-8">
-      <p class="text-lg text-gray-600">
-        Prefix key: <code class="rounded bg-gray-100 px-2 py-1">Ctrl+b</code>
-      </p>
-      <p class="text-sm text-gray-500">
-        Press the prefix key before any command below
-      </p>
-    </div>
-
-    <section>
-      <h2>Sessions</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2">
-        <div>Start new session</div>
-        <ul>
-          <li>
-            <Terminal>tmux</Terminal>
-          </li>
-          <li>
-            <Terminal>tmux new</Terminal>
-          </li>
-          <li>
-            <Terminal>tmux new-session</Terminal>
-          </li>
-          <li><Tmux>new</Tmux></li>
-        </ul>
-        <div>Rename session</div>
-        <ul>
-          <li>
-            <Keyboard>$</Keyboard>
-          </li>
-        </ul>
-        <div>Start new session by name</div>
-        <ul>
-          <li>
-            <Terminal>tmux new-session -s NAME</Terminal>
-          </li>
-        </ul>
-        <div>Start or attach to session by name</div>
-        <ul>
-          <li>
-            <Terminal>tmux new-session -A -s NAME</Terminal>
-          </li>
-        </ul>
+      <div class="mb-8">
+        <p class="text-lg text-gray-600">
+          Prefix key: <code class="rounded bg-gray-100 px-2 py-1">Ctrl+b</code>
+        </p>
+        <p class="text-sm text-gray-500">
+          Press the prefix key before any command below
+        </p>
       </div>
-    </section>
-  </main>
+
+      <section>
+        <h2>Sessions</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2">
+          <div>Start new session</div>
+          <ul>
+            <li>
+              <Terminal>tmux</Terminal>
+            </li>
+            <li>
+              <Terminal>tmux new</Terminal>
+            </li>
+            <li>
+              <Terminal>tmux new-session</Terminal>
+            </li>
+            <li><Tmux>new</Tmux></li>
+          </ul>
+          <div>Rename session</div>
+          <ul>
+            <li>
+              <Keyboard>$</Keyboard>
+            </li>
+          </ul>
+          <div>Start new session by name</div>
+          <ul>
+            <li>
+              <Terminal>tmux new-session -s NAME</Terminal>
+            </li>
+          </ul>
+          <div>Start or attach to session by name</div>
+          <ul>
+            <li>
+              <Terminal>tmux new-session -A -s NAME</Terminal>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+    <footer class="mt-20">
+      <div
+        class="font-(family-name:--font-heading) text-[16rem] leading-[8rem] sm:text-[24rem] sm:leading-[12rem]"
+      >
+        TMUX
+      </div>
+    </footer>
+  </div>
 </Layout>

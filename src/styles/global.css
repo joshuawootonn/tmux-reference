@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+@theme {
+  --font-heading: "Micro 5", "sans-serif";
+}
+
 :root {
   --primary-color: #2d3748;
   --secondary-color: #4a5568;

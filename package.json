@@ -9,6 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@fontsource/micro-5": "^5.2.5",
     "@tailwindcss/vite": "^4.0.15",
     "astro": "^5.5.4",
     "prettier": "^3.5.3",
