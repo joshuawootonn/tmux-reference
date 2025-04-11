@@ -16,7 +16,7 @@ import "../styles/global.css";
       "prose-h1:text-6xl",
       "prose-ul:my-0",
       "prose-li:list-none prose-li:first:mt-0",
-      "prose-code:after:hidden prose-code:font-normal prose-code:before:hidden",
+      "prose-code:after:hidden prose-code:font-normal",
       "prose-kbd:font-mono prose-kbd:bg-gray-100 prose-kbd:p-[0.2em_0.4em] prose-kbd:rounded-xs prose-kbd:text-sm",
     ]}
   >
@@ -25,10 +25,7 @@ import "../styles/global.css";
 
       <div class="mb-8">
         <p class="text-lg text-gray-600">
-          Prefix key: <code class="rounded bg-gray-100 px-2 py-1">Ctrl+b</code>
-        </p>
-        <p class="text-sm text-gray-500">
-          Press the prefix key before any command below
+          Prefix key: <kbd>ctrl + b </kbd>
         </p>
       </div>
 
@@ -59,6 +56,9 @@ import "../styles/global.css";
             <li>
               <Terminal>tmux new-session -s NAME</Terminal>
             </li>
+            <li>
+              <Tmux>new -s NAME</Tmux>
+            </li>
           </ul>
           <div>Start or attach to session by name</div>
           <ul>
@@ -66,12 +66,51 @@ import "../styles/global.css";
               <Terminal>tmux new-session -A -s NAME</Terminal>
             </li>
           </ul>
+          <div>Kill current session</div>
+          <ul>
+            <li>
+              <Tmux>kill-session</Tmux>
+            </li>
+          </ul>
+          <div>Kill session by name</div>
+          <ul>
+            <li>
+              <Terminal>tmux kill-session -t NAME</Terminal>
+            </li>
+            <li>
+              <Terminal>tmux kill-ses -t NAME</Terminal>
+            </li>
+          </ul>
+          <div>Kill other sessions</div>
+          <ul>
+            <li>
+              <Terminal>tmux kill-session -a</Terminal>
+            </li>
+          </ul>
+          <div>Kill all sessions except NAME</div>
+          <ul>
+            <li>
+              <Terminal>tmux kill-session -a -t NAME</Terminal>
+            </li>
+          </ul>
+          <div>Rename session</div>
+          <ul>
+            <li>
+              <Keyboard>$</Keyboard>
+            </li>
+          </ul>
+          <div>Detach from session</div>
+          <ul>
+            <li>
+              <Keyboard>d</Keyboard>
+            </li>
+          </ul>
         </div>
       </section>
     </main>
     <footer class="mt-20">
       <div
-        class="font-(family-name:--font-heading) text-[16rem] leading-[8rem] sm:text-[24rem] sm:leading-[12rem]"
+        class="font-(family-name:--font-heading) text-[16rem] leading-[8rem] text-black sm:text-[24rem] sm:leading-[12rem]"
       >
         TMUX
       </div>
