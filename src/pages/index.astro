@@ -12,7 +12,7 @@ import "../styles/global.css";
       "prose mx-auto w-full px-4 py-10",
       "prose-headings:font-(family-name:--font-heading) prose-headings:font-bold",
       "prose-h1:text-6xl",
-      "prose-h2:text-5xl",
+      "prose-h2:text-5xl prose-h2:sticky prose-h2:top-0 prose-h2:-mx-4 prose-h2:bg-white/40 prose-h2:px-4 prose-h2:py-4 prose-h2:backdrop-blur-sm prose-h2:after:absolute prose-h2:after:right-4 prose-h2:after:bottom-0 prose-h2:after:left-4 prose-h2:after:bg-gray-100 prose-h2:after:h-0.5",
       "prose-h1:text-6xl",
       "prose-ul:my-0",
       "prose-li:list-none prose-li:first:mt-0",
@@ -31,6 +31,162 @@ import "../styles/global.css";
 
       <section>
         <h2>Sessions</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2">
+          <div>Start new session</div>
+          <ul>
+            <li>
+              <Terminal>tmux</Terminal>
+            </li>
+            <li>
+              <Terminal>tmux new</Terminal>
+            </li>
+            <li>
+              <Terminal>tmux new-session</Terminal>
+            </li>
+            <li><Tmux>new</Tmux></li>
+          </ul>
+          <div>Rename session</div>
+          <ul>
+            <li>
+              <Keyboard>$</Keyboard>
+            </li>
+          </ul>
+          <div>Start new session by name</div>
+          <ul>
+            <li>
+              <Terminal>tmux new-session -s NAME</Terminal>
+            </li>
+            <li>
+              <Tmux>new -s NAME</Tmux>
+            </li>
+          </ul>
+          <div>Start or attach to session by name</div>
+          <ul>
+            <li>
+              <Terminal>tmux new-session -A -s NAME</Terminal>
+            </li>
+          </ul>
+          <div>Kill current session</div>
+          <ul>
+            <li>
+              <Tmux>kill-session</Tmux>
+            </li>
+          </ul>
+          <div>Kill session by name</div>
+          <ul>
+            <li>
+              <Terminal>tmux kill-session -t NAME</Terminal>
+            </li>
+            <li>
+              <Terminal>tmux kill-ses -t NAME</Terminal>
+            </li>
+          </ul>
+          <div>Kill other sessions</div>
+          <ul>
+            <li>
+              <Terminal>tmux kill-session -a</Terminal>
+            </li>
+          </ul>
+          <div>Kill all sessions except NAME</div>
+          <ul>
+            <li>
+              <Terminal>tmux kill-session -a -t NAME</Terminal>
+            </li>
+          </ul>
+          <div>Rename session</div>
+          <ul>
+            <li>
+              <Keyboard>$</Keyboard>
+            </li>
+          </ul>
+          <div>Detach from session</div>
+          <ul>
+            <li>
+              <Keyboard>d</Keyboard>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section>
+        <h2>Windows</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2">
+          <div>Start new session</div>
+          <ul>
+            <li>
+              <Terminal>tmux</Terminal>
+            </li>
+            <li>
+              <Terminal>tmux new</Terminal>
+            </li>
+            <li>
+              <Terminal>tmux new-session</Terminal>
+            </li>
+            <li><Tmux>new</Tmux></li>
+          </ul>
+          <div>Rename session</div>
+          <ul>
+            <li>
+              <Keyboard>$</Keyboard>
+            </li>
+          </ul>
+          <div>Start new session by name</div>
+          <ul>
+            <li>
+              <Terminal>tmux new-session -s NAME</Terminal>
+            </li>
+            <li>
+              <Tmux>new -s NAME</Tmux>
+            </li>
+          </ul>
+          <div>Start or attach to session by name</div>
+          <ul>
+            <li>
+              <Terminal>tmux new-session -A -s NAME</Terminal>
+            </li>
+          </ul>
+          <div>Kill current session</div>
+          <ul>
+            <li>
+              <Tmux>kill-session</Tmux>
+            </li>
+          </ul>
+          <div>Kill session by name</div>
+          <ul>
+            <li>
+              <Terminal>tmux kill-session -t NAME</Terminal>
+            </li>
+            <li>
+              <Terminal>tmux kill-ses -t NAME</Terminal>
+            </li>
+          </ul>
+          <div>Kill other sessions</div>
+          <ul>
+            <li>
+              <Terminal>tmux kill-session -a</Terminal>
+            </li>
+          </ul>
+          <div>Kill all sessions except NAME</div>
+          <ul>
+            <li>
+              <Terminal>tmux kill-session -a -t NAME</Terminal>
+            </li>
+          </ul>
+          <div>Rename session</div>
+          <ul>
+            <li>
+              <Keyboard>$</Keyboard>
+            </li>
+          </ul>
+          <div>Detach from session</div>
+          <ul>
+            <li>
+              <Keyboard>d</Keyboard>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section>
+        <h2>Panes</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2">
           <div>Start new session</div>
           <ul>
