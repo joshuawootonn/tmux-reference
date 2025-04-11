@@ -3,6 +3,8 @@
 
 @theme {
   --font-heading: "Space Grotesk Variable", "sans-serif";
+  --font-sans: "DM Sans Variable", sans-serif;
+  --font-mono: "DM Mono", sans-serif;
 }
 
 :root {
@@ -19,7 +21,6 @@ code {
   background-color: #f1f5f9;
   padding: 0.2em 0.4em;
   border-radius: 0.25rem;
-  font-family: "SF Mono", "Consolas", monospace;
 }
 
 .prose code {
