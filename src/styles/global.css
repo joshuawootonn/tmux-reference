@@ -2,7 +2,7 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --font-heading: "Micro 5", "sans-serif";
+  --font-heading: "Space Grotesk Variable", "sans-serif";
 }
 
 :root {
