@@ -1,0 +1,173 @@
+---
+title: TMUX Cheat Sheet
+layout: ../layouts/Main.astro
+author: Josh Wootonn
+---
+
+import K from "../components/Keyboard.astro";
+import T from "../components/Terminal.astro";
+import M from "../components/Tmux.astro";
+
+<p class="text-lg text-gray-600">
+  Prefix key: <kbd>ctrl + b </kbd>
+</p>
+
+<section>
+
+## Sessions
+
+<div class="grid grid-cols-1 sm:grid-cols-2 prose-p:my-0">
+
+Start new session
+
+- <T>tmux</T>
+- <T>tmux new</T>
+- <T>tmux new-session</T>
+
+Rename session
+
+- <K>$</K>
+
+Start a new session by name
+
+- <T>tmux new-session -s NAME</T>
+- <M>new -s NAME</M>
+
+Start or attach to session by name
+
+- <T>tmux new-session -A -s NAME</T>
+
+Kill current session
+
+- <M>kill-session</M>
+
+Kill session by name
+
+- <T>tmux kill-session -t NAME</T>
+- <T>tmux kill-ses -t NAME</T>
+
+Kill other sessions
+
+- <T>tmux kill-session -a</T>
+
+Kill all sessions except NAME
+
+- <T>tmux kill-session -a -t NAME</T>
+
+Rename session
+
+- <K>$</K>
+
+Detach from session
+
+- <K>d</K>
+
+</div>
+
+</section>
+<section>
+
+## Windows
+
+<div class="grid grid-cols-1 sm:grid-cols-2 prose-p:my-0">
+
+Start new session
+
+- <T>tmux</T>
+- <T>tmux new</T>
+- <T>tmux new-session</T>
+
+Rename session
+
+- <K>$</K>
+
+Start a new session by name
+
+- <T>tmux new-session -s NAME</T>
+- <M>new -s NAME</M>
+
+Start or attach to session by name
+
+- <T>tmux new-session -A -s NAME</T>
+
+Kill current session
+
+- <M>kill-session</M>
+
+Kill session by name
+
+- <T>tmux kill-session -t NAME</T>
+- <T>tmux kill-ses -t NAME</T>
+
+Kill other sessions
+
+- <T>tmux kill-session -a</T>
+
+Kill all sessions except NAME
+
+- <T>tmux kill-session -a -t NAME</T>
+
+Rename session
+
+- <K>$</K>
+
+Detach from session
+
+- <K>d</K>
+
+</div>
+
+</section>
+<section>
+
+## Panes
+
+<div class="grid grid-cols-1 sm:grid-cols-2 prose-p:my-0">
+
+Start new session
+
+- <T>tmux</T>
+- <T>tmux new</T>
+- <T>tmux new-session</T>
+
+Rename session
+
+- <K>$</K>
+
+Start a new session by name
+
+- <T>tmux new-session -s NAME</T>
+- <M>new -s NAME</M>
+
+Start or attach to session by name
+
+- <T>tmux new-session -A -s NAME</T>
+
+Kill current session
+
+- <M>kill-session</M>
+
+Kill session by name
+
+- <T>tmux kill-session -t NAME</T>
+- <T>tmux kill-ses -t NAME</T>
+
+Kill other sessions
+
+- <T>tmux kill-session -a</T>
+
+Kill all sessions except NAME
+
+- <T>tmux kill-session -a -t NAME</T>
+
+Rename session
+
+- <K>$</K>
+
+Detach from session
+
+- <K>d</K>
+
+</div>
+
+</section>

@@ -1,0 +1,55 @@
+---
+const { frontmatter } = Astro.props;
+import "@fontsource-variable/space-grotesk";
+import "@fontsource/dm-mono";
+import "@fontsource-variable/dm-sans";
+import "../styles/global.css";
+---
+
+<html>
+  <head>
+    <!-- ... -->
+    <meta charset="utf-8" />
+  </head>
+  <!-- ... -->
+  <main
+    class:list={[
+      "prose mx-auto w-full px-4 py-10",
+      "prose-headings:font-(family-name:--font-heading) prose-headings:font-bold",
+      "prose-h1:text-6xl",
+      "prose-h2:text-5xl prose-h2:sticky prose-h2:top-0 prose-h2:-mx-4 prose-h2:bg-white/40 prose-h2:px-4 prose-h2:py-4 prose-h2:backdrop-blur-sm prose-h2:after:absolute prose-h2:after:right-4 prose-h2:after:bottom-0 prose-h2:after:left-4 prose-h2:after:bg-gray-100 prose-h2:after:h-0.5",
+      "prose-h1:text-6xl",
+      "prose-ul:my-0",
+      "prose-li:list-none prose-li:first:mt-0",
+      "prose-code:after:hidden prose-code:font-normal",
+      "prose-kbd:font-mono prose-kbd:bg-gray-100 prose-kbd:p-[0.2em_0.4em] prose-kbd:rounded-xs prose-kbd:text-sm",
+    ]}
+  >
+    <h1>{frontmatter.title}</h1>
+    <slot />
+  </main>
+  <!-- Markdown content is injected here -->
+  <!-- ... -->
+
+  <footer class="mt-20 overflow-hidden pb-10">
+    <div class="prose relative z-0 mx-auto w-full font-bold">
+      <div
+        class="absolute inset-0 -translate-x-full font-(family-name:--font-heading) text-[10rem] leading-[8rem] text-black sm:text-[14rem] sm:leading-[12rem]"
+      >
+        TMUX
+      </div>
+      <div
+        class="font-(family-name:--font-heading) text-[10rem] leading-[8rem] text-black sm:text-[14rem] sm:leading-[12rem]"
+      >
+        TMUX
+      </div>
+      <div
+        class="absolute inset-0 translate-x-full font-(family-name:--font-heading) text-[10rem] leading-[8rem] text-black sm:text-[14rem] sm:leading-[12rem]"
+      >
+        TMUX
+      </div>
+    </div>
+  </footer>
+
+
+</html>
