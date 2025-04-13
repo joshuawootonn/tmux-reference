@@ -130,12 +130,12 @@ Move window between sessions (by number)
 
 - <M>movew -s 0:0 -t 1:9</M>
 
-Reposition window in the current Session ????
+Reposition window in the current Session (todo)
 
 - <M>move-window -s src_session:src_window</M>
 - <M>movew -s 0:9</M>
 
-Renumber windows to remove gap in the sequence ????
+Renumber windows to remove gap in the sequence (todo)
 
 - <M>move-window -r</M>
 - <M>movew -r</M>
@@ -148,50 +148,88 @@ Renumber windows to remove gap in the sequence ????
 
 <div class="grid grid-cols-1 sm:grid-cols-2 prose-p:my-0">
 
-Start new session
+Toggle last active pane (sync with window)
 
-- <T>tmux</T>
-- <T>tmux new</T>
-- <T>tmux new-session</T>
+- <K>;</K>
 
-Rename session
+Create horizontal split
 
-- <K>$</K>
+- <K>%</K>
+- <M>split-window -h</M>
 
-Start a new session by name
+Create vertical split
 
-- <T>tmux new-session -s NAME</T>
-- <M>new -s NAME</M>
+- <K>"</K>
+- <M>split-window -v</M>
 
-Start or attach to session by name
+Join two windows as panes (Merge window 2 to window 1 as panes) ????
 
-- <T>tmux new-session -A -s NAME</T>
+- <M>join-pane -s 2 -t 1</M>
 
-Kill current session
+Move pane from one window to another (Move pane 1 from window 2 to pane after 0 of window 1) ????
 
-- <M>kill-session</M>
+- <M>join-pane -s 2.1 -t 1.0</M>
 
-Kill session by name
+Move the current pane left
 
-- <T>tmux kill-session -t NAME</T>
-- <T>tmux kill-ses -t NAME</T>
+- <K>\{</K>
 
-Kill other sessions
+Move the current pane right
 
-- <T>tmux kill-session -a</T>
+- <K>}</K>
 
-Kill all sessions except NAME
+Switch to pane to the direction
 
-- <T>tmux kill-session -a -t NAME</T>
+- <K>↑</K>
+- <K>→</K>
+- <K>↓</K>
+- <K>←</K>
 
-Rename session
+Toggle synchronize-panes(send command to all panes)
 
-- <K>$</K>
+- <M>setw synchronize-panes</M>
 
-Detach from session
+Toggle between pane layouts
 
-- <K>d</K>
+- <K>
+    <i>space</i>
+  </K>
+
+Switch to next pane
+
+- <K>o</K>
+
+Show pane numbers
+
+- <K>q</K>
+
+Switch/select pane by number
+
+- <K>q 0 ... 9</K>
+
+Toggle pane zoom
+
+- <K>z</K>
+
+Convert pane into a window
+
+- <K>!</K>
+
+Close current panel
+
+- <K>x</K>
+
+Resize current pane height (todo)
+
+- <K>+ ↑</K>
+- <K>+ →</K>
+- <K>+ ↓</K>
+- <K>+ ←</K>
+- <K>ctrl + ↑</K>
+- <K>ctrl + →</K>
+- <K>ctrl + ↓</K>
+- <K>ctrl + ←</K>
+- https://superuser.com/a/1853429
 
 </div>
-
 </section>
