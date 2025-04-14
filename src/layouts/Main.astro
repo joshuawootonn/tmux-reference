@@ -4,7 +4,32 @@ import "@fontsource-variable/space-grotesk";
 import "@fontsource/dm-mono";
 import "@fontsource-variable/dm-sans";
 import "../styles/global.css";
+import { ThemeToggle } from "@/components/theme-toggle";
 ---
+
+<script is:inline>
+  const getThemePreference = () => {
+    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+      return localStorage.getItem("theme");
+    }
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+  };
+  const isDark = getThemePreference() === "dark";
+  document.documentElement.classList[isDark ? "add" : "remove"]("dark");
+
+  if (typeof localStorage !== "undefined") {
+    const observer = new MutationObserver(() => {
+      const isDark = document.documentElement.classList.contains("dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+  }
+</script>
 
 <html>
   <head>
@@ -21,18 +46,24 @@ import "../styles/global.css";
     <main
       class:list={[
         "col-span-full",
-        "prose mx-auto w-full max-w-177 px-7 py-10 md:px-4",
+        "prose dark:prose-invert mx-auto w-full max-w-177 px-7 py-10 md:px-4",
         "prose-headings:font-(family-name:--font-heading) prose-headings:font-bold",
         "prose-h1:text-6xl",
         "prose-h1:text-6xl",
         "prose-ul:my-0",
         "prose-li:list-none prose-li:first:mt-0",
         "prose-code:after:hidden prose-code:font-normal",
-        "prose-kbd:font-mono prose-kbd:bg-gray-100 prose-kbd:p-[0.2em_0.4em] prose-kbd:rounded-xs prose-kbd:text-sm",
+        "prose-kbd:font-mono prose-kbd:p-[0.2em_0.4em] prose-kbd:rounded-xs prose-kbd:text-sm",
         "",
       ]}
     >
       <h1>{frontmatter.title}</h1>
+      <div class="flex w-full items-center justify-between">
+        <p class="text-lg text-gray-600">
+          Prefix key: <kbd>ctrl + b </kbd>
+        </p>
+        <ThemeToggle client:load />
+      </div>
       <slot />
     </main>
     <!-- Markdown content is injected here -->
