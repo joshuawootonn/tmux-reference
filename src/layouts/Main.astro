@@ -13,19 +13,23 @@ import "../styles/global.css";
   </head>
   <!-- ... -->
   <div
-    class="bg-[image:radial-gradient(var(--pattern-fg)_1px,_transparent_0)] bg-[size:10px_10px] bg-fixed [--pattern-fg:var(--color-gray-950)]/5"
+    class:list={[
+      "bg-[image:radial-gradient(var(--pattern-dot-fg)_1px,_transparent_0)] bg-[size:20px_20px] bg-local",
+      "grid w-full grid-cols-[repeat(auto-fit,_12px)] gap-0",
+    ]}
   >
     <main
       class:list={[
-        "prose mx-auto w-full px-4 py-10",
+        "col-span-full",
+        "prose mx-auto w-full max-w-177 px-7 py-10 md:px-4",
         "prose-headings:font-(family-name:--font-heading) prose-headings:font-bold",
         "prose-h1:text-6xl",
-        "prose-h2:text-5xl prose-h2:sticky prose-h2:top-0 prose-h2:-mx-4 prose-h2:bg-white/40 prose-h2:px-4 prose-h2:py-4 prose-h2:backdrop-blur-sm prose-h2:after:absolute prose-h2:after:right-4 prose-h2:after:bottom-0 prose-h2:after:left-4 prose-h2:after:bg-gray-100 prose-h2:after:h-0.5",
         "prose-h1:text-6xl",
         "prose-ul:my-0",
         "prose-li:list-none prose-li:first:mt-0",
         "prose-code:after:hidden prose-code:font-normal",
         "prose-kbd:font-mono prose-kbd:bg-gray-100 prose-kbd:p-[0.2em_0.4em] prose-kbd:rounded-xs prose-kbd:text-sm",
+        "",
       ]}
     >
       <h1>{frontmatter.title}</h1>

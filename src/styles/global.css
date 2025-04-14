@@ -11,6 +11,9 @@
   --primary-color: #2d3748;
   --secondary-color: #4a5568;
   --accent-color: #4299e1;
+
+  --pattern-stripe-fg: var(--color-gray-100);
+  --pattern-dot-fg: var(--color-gray-300);
 }
 
 body {
@@ -51,4 +54,37 @@ code {
 
 .prose a:hover {
   text-decoration: underline;
+}
+
+.prose h2 {
+  @apply sticky top-3 z-0 -mx-4 bg-white px-4 py-3 text-5xl;
+}
+
+.prose h2::before {
+  @apply absolute top-0 -right-3 -bottom-3 -left-0 -z-20 border-2 border-[var(--pattern-stripe-fg)];
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--pattern-stripe-fg) 0,
+    var(--pattern-stripe-fg) 2px,
+    white 0,
+    white 50%
+  );
+  clip-path: polygon(
+    0 0,
+    calc(100% - 9px) 0,
+    100% 9px,
+    100% 100%,
+    100% 100%,
+    12px 100%,
+    0 calc(100% - 12px),
+    0 0
+  );
+  background-size: 12px 12px;
+  background-attachment: local;
+  content: " ";
+}
+
+.prose h2::after {
+  @apply absolute inset-0 -z-10 border-2 border-gray-100 bg-white;
+  content: " ";
 }
