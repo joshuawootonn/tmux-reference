@@ -12,7 +12,7 @@
 
 :root {
   --symbol: var(--color-neutral-300);
-  --pattern-fg: var(--color-gray-300);
+  --pattern-fg: var(--color-neutral-300);
 
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -51,7 +51,7 @@
 
 .dark {
   --symbol: var(--color-neutral-600);
-  --pattern-fg: var(--color-gray-700);
+  --pattern-fg: var(--color-neutral-700);
 
   --background: oklch(0.1 0 0);
   --shadow: oklch(0 0 0);
@@ -117,7 +117,7 @@
 }
 
 .prose h2::after {
-  @apply bg-background absolute inset-0 -z-10 border-2 border-gray-100;
+  @apply bg-background absolute inset-0 -z-10 border-2 border-neutral-100;
   content: " ";
 }
 .dark .prose h2::after {
