@@ -19,6 +19,7 @@
   --pattern-dot-fg: var(--color-gray-300);
   --radius: 0.625rem;
   --background: oklch(1 0 0);
+  --shadow: oklch(0.995 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -52,9 +53,10 @@
 }
 
 .dark {
-  --pattern-stripe-fg: var(--color-gray-800);
+  --pattern-stripe-fg: var(--color-neutral-900);
   --pattern-dot-fg: var(--color-gray-700);
-  --background: oklch(0.145 0 0);
+  --background: oklch(0.1 0 0);
+  --shadow: oklch(0 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
@@ -97,8 +99,8 @@
     45deg,
     var(--pattern-stripe-fg) 0,
     var(--pattern-stripe-fg) 2px,
-    var(--background) 0,
-    var(--background) 50%
+    var(--shadow) 0,
+    var(--shadow) 50%
   );
   clip-path: polygon(
     0 0,
@@ -118,6 +120,9 @@
 .prose h2::after {
   @apply bg-background absolute inset-0 -z-10 border-2 border-gray-100;
   content: " ";
+}
+.dark .prose h2::after {
+  @apply border-neutral-800;
 }
 
 @theme inline {
