@@ -11,12 +11,9 @@
 }
 
 :root {
-  --primary-color: #2d3748;
-  --secondary-color: #4a5568;
-  --accent-color: #4299e1;
+  --symbol: var(--color-neutral-300);
+  --pattern-fg: var(--color-gray-300);
 
-  --pattern-stripe-fg: var(--color-gray-100);
-  --pattern-dot-fg: var(--color-gray-300);
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --shadow: oklch(0.995 0 0);
@@ -53,8 +50,9 @@
 }
 
 .dark {
-  --pattern-stripe-fg: var(--color-neutral-900);
-  --pattern-dot-fg: var(--color-gray-700);
+  --symbol: var(--color-neutral-600);
+  --pattern-fg: var(--color-gray-700);
+
   --background: oklch(0.1 0 0);
   --shadow: oklch(0 0 0);
   --foreground: oklch(0.985 0 0);
@@ -94,11 +92,12 @@
 }
 
 .prose h2::before {
-  @apply absolute top-0 -right-3 -bottom-3 -left-0 -z-20 border-2 border-[var(--pattern-stripe-fg)];
+  @apply absolute top-0 -right-3 -bottom-3 -left-0 -z-20 border-2 border-[var(--border)];
+
   background-image: repeating-linear-gradient(
     45deg,
-    var(--pattern-stripe-fg) 0,
-    var(--pattern-stripe-fg) 2px,
+    var(--border) 0,
+    var(--border) 2px,
     var(--shadow) 0,
     var(--shadow) 50%
   );
@@ -127,16 +126,20 @@
 
 .prose kbd {
   box-shadow:
-    0 0 0 1px var(--pattern-stripe-fg),
-    3px 3px var(--pattern-stripe-fg),
-    0 3px 0 var(--pattern-stripe-fg);
+    0 0 0 1px var(--border),
+    3px 3px var(--border),
+    0 3px 0 var(--border);
 }
 
 @theme inline {
+  --color-symbol: var(--symbol);
+  --color-pattern-fg: var(--pattern-fg);
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --color-: var(--background);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);

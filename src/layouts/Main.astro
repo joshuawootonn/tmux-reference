@@ -39,7 +39,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
   <!-- ... -->
   <div
     class:list={[
-      "bg-[image:radial-gradient(var(--pattern-dot-fg)_1px,_transparent_0)] bg-[size:20px_20px] bg-local",
+      "bg-[image:radial-gradient(var(--pattern-fg)_1px,_transparent_0)] bg-[size:20px_20px] bg-local",
       "grid w-full grid-cols-[repeat(auto-fit,_12px)] gap-0",
     ]}
   >
@@ -52,8 +52,8 @@ import { ThemeToggle } from "@/components/theme-toggle";
         "prose-h1:text-6xl",
         "prose-ul:my-0",
         "prose-li:list-none prose-li:first:mt-0",
-        "prose-code:after:hidden prose-code:font-normal",
-        "prose-kbd:font-mono prose-kbd:p-[0.2em_0.4em] prose-kbd:rounded-xs prose-kbd:text-sm",
+        "prose-code:after:hidden prose-code:p-[0.2em_0.4em] prose-code:font-normal prose-code:bg-background prose-code:border-border",
+        "prose-kbd:font-mono prose-kbd:p-[0.2em_0.4em] prose-kbd:rounded-none prose-kbd:bg-background prose-kbd:text-sm",
         "",
       ]}
     >
