@@ -125,6 +125,13 @@
   @apply border-neutral-800;
 }
 
+.prose kbd {
+  box-shadow:
+    0 0 0 1px var(--pattern-stripe-fg),
+    3px 3px var(--pattern-stripe-fg),
+    0 3px 0 var(--pattern-stripe-fg);
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
