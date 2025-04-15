@@ -117,11 +117,8 @@
 }
 
 .prose h2::after {
-  @apply bg-background absolute inset-0 -z-10 border-2 border-neutral-100;
+  @apply bg-background border-border absolute inset-0 -z-10 border-2;
   content: " ";
-}
-.dark .prose h2::after {
-  @apply border-neutral-800;
 }
 
 .prose kbd {
