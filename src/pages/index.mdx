@@ -16,9 +16,9 @@ import { Terminal as T } from "../components/terminal.tsx";
 
 Start new session
 
-- <T>tmux</T>
-- <T>tmux new</T>
-- <T>tmux new-session</T>
+- <T client:load>tmux</T>
+- <T client:load>tmux new</T>
+- <T client:load>tmux new-session</T>
 
 Rename session
 
@@ -26,29 +26,29 @@ Rename session
 
 Start a new session by name
 
-- <T>tmux new-session -s NAME</T>
+- <T client:load>tmux new-session -s NAME</T>
 - <M client:load>new -s NAME</M>
 
 Start or attach to session by name
 
-- <T>tmux new-session -A -s NAME</T>
+- <T client:load>tmux new-session -A -s NAME</T>
 
 Kill current session
 
-- <M>kill-session</M>
+- <M client:load>kill-session</M>
 
 Kill session by name
 
-- <T>tmux kill-session -t NAME</T>
-- <T>tmux kill-ses -t NAME</T>
+- <T client:load>tmux kill-session -t NAME</T>
+- <T client:load>tmux kill-ses -t NAME</T>
 
 Kill other sessions
 
-- <T>tmux kill-session -a</T>
+- <T client:load>tmux kill-session -a</T>
 
 Kill all sessions except NAME
 
-- <T>tmux kill-session -a -t NAME</T>
+- <T client:load>tmux kill-session -a -t NAME</T>
 
 Rename session
 
@@ -60,12 +60,12 @@ Detach from session
 
 Detach others on the session (todo)
 
-- <M>attach -d</M>
+- <M client:load>attach -d</M>
 
 Show all sessions
 
-- <T>tmux ls</T>
-- <T>tmux list-sessions</T>
+- <T client:load>tmux ls</T>
+- <T client:load>tmux list-sessions</T>
 - <K>s</K>
 
 Show all sessions w/ windows
@@ -74,17 +74,17 @@ Show all sessions w/ windows
 
 Attach to last session
 
-- <T>tmux a</T>
-- <T>tmux at</T>
-- <T>tmux attach</T>
-- <T>tmux attach-session</T>
+- <T client:load>tmux a</T>
+- <T client:load>tmux at</T>
+- <T client:load>tmux attach</T>
+- <T client:load>tmux attach-session</T>
 
 Attach to last session by NAME
 
-- <T>tmux a -t NAME</T>
-- <T>tmux at -t NAME</T>
-- <T>tmux attach -t NAME</T>
-- <T>tmux attach-session -t NAME</T>
+- <T client:load>tmux a -t NAME</T>
+- <T client:load>tmux at -t NAME</T>
+- <T client:load>tmux attach -t NAME</T>
+- <T client:load>tmux attach-session -t NAME</T>
 
 Goto previous session
 
@@ -105,7 +105,7 @@ Goto next session
 
 Start session with session and window name
 
-- <T>tmux new -s SESSION_NAME -n WINDOW_NAME</T>
+- <T client:load>tmux new -s SESSION_NAME -n WINDOW_NAME</T>
 
 Create window
 
@@ -148,29 +148,29 @@ Swap window order (absolute)
 
 </div>
 
-- <M>swap-window -s 2 -t</M>
+- <M client:load>swap-window -s 2 -t</M>
 
 Swap window order (relative)
 
-- <M>swap-window -t -1</M>
+- <M client:load>swap-window -t -1</M>
 
 Move window between sessions (by name)
 
-- <M>movew -s foo:0 -t bar:9</M>
+- <M client:load>movew -s foo:0 -t bar:9</M>
 
 Move window between sessions (by number)
 
-- <M>movew -s 0:0 -t 1:9</M>
+- <M client:load>movew -s 0:0 -t 1:9</M>
 
 Reposition window in the current Session (todo)
 
-- <M>move-window -s src_session:src_window</M>
-- <M>movew -s 0:9</M>
+- <M client:load>move-window -s src_session:src_window</M>
+- <M client:load>movew -s 0:9</M>
 
 Renumber windows to remove gap in the sequence (todo)
 
-- <M>move-window -r</M>
-- <M>movew -r</M>
+- <M client:load>move-window -r</M>
+- <M client:load>movew -r</M>
 
 </div>
 </section>
@@ -187,20 +187,20 @@ Toggle last active pane (sync with window)
 Create horizontal split
 
 - <K>%</K>
-- <M>split-window -h</M>
+- <M client:load>split-window -h</M>
 
 Create vertical split
 
 - <K>"</K>
-- <M>split-window -v</M>
+- <M client:load>split-window -v</M>
 
 Join two windows as panes (Merge window 2 to window 1 as panes) ????
 
-- <M>join-pane -s 2 -t 1</M>
+- <M client:load>join-pane -s 2 -t 1</M>
 
 Move pane from one window to another (Move pane 1 from window 2 to pane after 0 of window 1) ????
 
-- <M>join-pane -s 2.1 -t 1.0</M>
+- <M client:load>join-pane -s 2.1 -t 1.0</M>
 
 Move the current pane left
 
@@ -219,7 +219,7 @@ Switch to pane to the direction
 
 Toggle synchronize-panes(send command to all panes)
 
-- <M>setw synchronize-panes</M>
+- <M client:load>setw synchronize-panes</M>
 
 Toggle between pane layouts
 
