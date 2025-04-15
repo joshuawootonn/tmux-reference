@@ -4,9 +4,9 @@ layout: ../layouts/Main.astro
 author: Josh Wootonn
 ---
 
-import K from "../components/Keyboard.astro";
-import T from "../components/Terminal.astro";
-import M from "../components/Tmux.astro";
+import { Tmux as M } from "../components/tmux.tsx";
+import { Keyboard as K } from "../components/keyboard.tsx";
+import { Terminal as T } from "../components/terminal.tsx";
 
 <section>
 
@@ -27,7 +27,7 @@ Rename session
 Start a new session by name
 
 - <T>tmux new-session -s NAME</T>
-- <M>new -s NAME</M>
+- <M client:load>new -s NAME</M>
 
 Start or attach to session by name
 
