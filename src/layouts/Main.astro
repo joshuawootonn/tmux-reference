@@ -5,6 +5,7 @@ import "@fontsource/dm-mono";
 import "@fontsource-variable/dm-sans";
 import "../styles/global.css";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { Terminal } from "@/components/terminal";
 ---
 
 <script is:inline>
@@ -54,16 +55,13 @@ import { ThemeToggle } from "@/components/theme-toggle";
         "prose-li:list-none prose-li:first:mt-0",
         "prose-code:after:hidden prose-code:p-[0.2em_0.4em] prose-code:font-normal prose-code:bg-background prose-code:border-border",
         "prose-kbd:font-mono prose-kbd:p-[0.2em_0.4em] prose-kbd:rounded-none prose-kbd:bg-background prose-kbd:text-sm",
-        "",
       ]}
     >
-      <h1>{frontmatter.title}</h1>
-      <div class="flex w-full items-center justify-between">
-        <p class="text-lg">
-          Prefix key: <kbd>ctrl + b </kbd>
-        </p>
+      <div class="mb-5 flex w-full items-center justify-between">
+        <h1 class="!m-0">{frontmatter.title}</h1>
         <ThemeToggle client:load />
       </div>
+      <p>A quick reference for all tmux shortcuts.</p>
       <slot />
     </main>
     <!-- Markdown content is injected here -->

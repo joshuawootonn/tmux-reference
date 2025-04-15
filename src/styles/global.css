@@ -123,7 +123,7 @@
 
 .prose kbd {
   box-shadow:
-    0 0 0 1px var(--border),
+    0 0 0 1.5px var(--border),
     3px 3px var(--border);
 }
 
