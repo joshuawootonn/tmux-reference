@@ -163,9 +163,9 @@
     3px 3px var(--border);
 }
 
-*:focus-visible {
-  outline: none;
-  @apply focus-visible:border-ring focus-visible:ring-ring focus-visible:ring-[1.5px];
+link:focus-visible,
+button:focus-visible {
+  @apply focus-visible:border-ring focus-visible:ring-ring outline-none focus-visible:ring-[1.5px];
 }
 
 @theme inline {
