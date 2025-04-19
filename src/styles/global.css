@@ -17,8 +17,7 @@
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --shadow: oklch(0.995 0 0);
-  --dark-shadow: oklch(0.998 0 0);
-  --dark-shadow: oklch(0.02 0 0);
+  --dark-shadow: oklch(0.98 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -148,7 +147,6 @@
     0 calc(100% - 15px),
     0 0
   );
-  background-color: black;
   background-size: 12px 12px;
   background-attachment: local;
   content: " ";
