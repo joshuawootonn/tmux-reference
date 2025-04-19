@@ -128,7 +128,7 @@
   content: " ";
 }
 .page::before {
-  @apply absolute top-0 right-0 -bottom-6 left-0 -z-20 border-2 border-[var(--border)];
+  @apply absolute top-0 right-0 -bottom-3 left-0 -z-20 border-2 border-[var(--border)];
 
   background-image: repeating-linear-gradient(
     45deg,
@@ -140,12 +140,12 @@
 
   clip-path: polygon(
     0 0,
-    calc(100% - 9px) 0,
-    100% 9px,
+    calc(100% - 13px) 0,
+    100% 13px,
     100% 100%,
     100% 100%,
-    26px 100%,
-    0 calc(100% - 26px),
+    14px 100%,
+    0 calc(100% - 15px),
     0 0
   );
   background-color: black;
