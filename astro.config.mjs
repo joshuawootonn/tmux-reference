@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from "astro/config";
+import { defineConfig, envField } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import mdx from "@astrojs/mdx";
 
@@ -11,4 +11,14 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   integrations: [mdx(), react()],
+  env: {
+    schema: {
+      FATHOM_ID: envField.string({
+        context: "client",
+        access: "public",
+        optional: true,
+      }),
+    },
+  },
 });
+

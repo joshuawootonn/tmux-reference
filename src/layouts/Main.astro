@@ -5,6 +5,7 @@ import "@fontsource/dm-mono";
 import "@fontsource-variable/dm-sans";
 import "../styles/global.css";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { FATHOM_ID } from "astro:env/client";
 ---
 
 <script is:inline>
@@ -89,7 +90,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 
   <script
     src="https://cdn.usefathom.com/script.js"
-    data-site="MTEHUNJB"
+    data-site={FATHOM_ID}
     defer
     is:inline></script>
 
