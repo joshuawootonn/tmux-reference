@@ -17,6 +17,8 @@
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --shadow: oklch(0.995 0 0);
+  --dark-shadow: oklch(0.998 0 0);
+  --dark-shadow: oklch(0.02 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -54,7 +56,8 @@
   --pattern-fg: var(--color-neutral-700);
 
   --background: oklch(0.1 0 0);
-  --shadow: oklch(0 0 0);
+  --shadow: oklch(0.07 0 0);
+  --dark-shadow: oklch(0.02 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
@@ -92,7 +95,7 @@
 }
 
 .prose h2::before {
-  @apply absolute top-0 -right-3 -bottom-3 -left-0 -z-20 border-2 border-[var(--border)];
+  @apply absolute top-0 -right-3 -bottom-3 -left-0 -z-20 border-2 border-[var(--border)] bg-black/80;
 
   background-image: repeating-linear-gradient(
     45deg,
@@ -111,6 +114,41 @@
     0 calc(100% - 12px),
     0 0
   );
+  background-size: 12px 12px;
+  background-attachment: local;
+  content: " ";
+}
+
+.page {
+  @apply bg-background;
+}
+
+.page::after {
+  @apply border-border pointer-events-none absolute inset-0 border-2;
+  content: " ";
+}
+.page::before {
+  @apply absolute top-0 right-0 -bottom-6 left-0 -z-20 border-2 border-[var(--border)];
+
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--border) 0,
+    var(--border) 2px,
+    var(--dark-shadow) 0,
+    var(--dark-shadow) 50%
+  );
+
+  clip-path: polygon(
+    0 0,
+    calc(100% - 9px) 0,
+    100% 9px,
+    100% 100%,
+    100% 100%,
+    26px 100%,
+    0 calc(100% - 26px),
+    0 0
+  );
+  background-color: black;
   background-size: 12px 12px;
   background-attachment: local;
   content: " ";
@@ -140,7 +178,7 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  --color-: var(--background);
+  --color-shadow: var(--shadow);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -179,6 +217,6 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-shadow text-foreground;
   }
 }
