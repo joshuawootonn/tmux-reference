@@ -13,7 +13,15 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   site: "https://www.tmuxreference.com",
-  integrations: [mdx(), react(), sitemap()],
+  integrations: [
+    sitemap({
+      changefreq: "weekly",
+      priority: 0.7,
+      lastmod: new Date("2025-04-20"),
+    }),
+    mdx(),
+    react(),
+  ],
   env: {
     schema: {
       FATHOM_ID: envField.string({
