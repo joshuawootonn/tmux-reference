@@ -118,6 +118,46 @@
   content: " ";
 }
 
+.prose h2::after {
+  @apply bg-background border-border absolute inset-0 -z-10 border-2;
+  content: " ";
+}
+
+.not-found {
+  @apply relative z-0;
+}
+
+.not-found::before {
+  @apply absolute top-0 -right-3 -bottom-3 -left-0 -z-20 border-2 border-[var(--border)] bg-black/80;
+
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--border) 0,
+    var(--border) 2px,
+    var(--shadow) 0,
+    var(--shadow) 50%
+  );
+  clip-path: polygon(
+    0 0,
+    calc(100% - 13px) 0,
+    100% 13px,
+    100% 100%,
+    100% 100%,
+    8px 100%,
+    0 calc(100% - 8px),
+    0 0
+  );
+  background-size: 12px 12px;
+  background-attachment: local;
+  background-position: 0px;
+  content: " ";
+}
+
+.not-found::after {
+  @apply border-border bg-background absolute inset-0 -z-10 border-2;
+  content: " ";
+}
+
 .page {
   @apply bg-background;
 }
@@ -139,11 +179,6 @@
 
   background-size: 12px 12px;
   background-attachment: local;
-  content: " ";
-}
-
-.prose h2::after {
-  @apply bg-background border-border absolute inset-0 -z-10 border-2;
   content: " ";
 }
 
