@@ -35,6 +35,7 @@ import { FATHOM_ID } from "astro:env/client";
 <html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
   </head>
   <div
     class:list={[
@@ -59,13 +60,11 @@ import { FATHOM_ID } from "astro:env/client";
     >
       <div class="mb-5 flex w-full items-center justify-between">
         <h1 class="!m-0">{frontmatter.title}</h1>
-        <ThemeToggle client:load />
       </div>
-      <p>A quick reference for all tmux shortcuts.</p>
+      <p>A quick reference for all the TMUX shortcuts.</p>
+      <ThemeToggle client:load />
       <slot />
     </main>
-    <!-- Markdown content is injected here -->
-    <!-- ... -->
   </div>
   <footer
     class="border-t-border bg-shadow col-span-full mt-3 space-y-10 overflow-hidden py-20"
