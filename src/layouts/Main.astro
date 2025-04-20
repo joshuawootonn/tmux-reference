@@ -36,6 +36,20 @@ import { FATHOM_ID } from "astro:env/client";
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
+    <title>TMUX Reference</title>
+    <meta name="description" content={frontmatter.description} />
+    <meta name="robots" content="index,follow" />
+    <meta name="googlebot" content="index,follow" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@JoshWootonn" />
+    <meta property="og:title" content="Josh Wootonn" />
+    <meta property="og:description" content={frontmatter.description} />
+    <meta property="og:image" content="/seo.png" />
+    <meta property="og:image:alt" content="TMUX Reference logo" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="628" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link href="https://twitter.com/JoshWootonn" rel="me" />
   </head>
   <div
     class:list={[
