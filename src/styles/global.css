@@ -137,16 +137,6 @@
     var(--dark-shadow) 50%
   );
 
-  clip-path: polygon(
-    0 0,
-    calc(100% - 13px) 0,
-    100% 13px,
-    100% 100%,
-    100% 100%,
-    14px 100%,
-    0 calc(100% - 15px),
-    0 0
-  );
   background-size: 12px 12px;
   background-attachment: local;
   content: " ";
