@@ -13,6 +13,8 @@ import { Terminal as T } from "../components/terminal.tsx";
 
 ## Sessions
 
+### Create and delete
+
 <div class="grid grid-cols-1 sm:grid-cols-2 prose-p:my-0">
 
 Start new session
@@ -20,10 +22,7 @@ Start new session
 - <T client:load>tmux</T>
 - <T client:load>tmux new</T>
 - <T client:load>tmux new-session</T>
-
-Rename session
-
-- <K>$</K>
+- <M client:load>new</M>
 
 Start a new session by name
 
@@ -51,17 +50,23 @@ Kill all sessions except NAME
 
 - <T client:load>tmux kill-session -a -t NAME</T>
 
-Rename session
+</div>
 
-- <K>$</K>
+### Navigation
 
-Detach from session
+<div class="prose-p:my-0 grid grid-cols-1 sm:grid-cols-2">
 
-- <K>d</K>
+Goto previous session
 
-Detach others on the session (todo)
+- <K>(</K>
 
-- <M client:load>attach -d</M>
+Goto next session
+
+- <K>)</K>
+
+Switch to last active session
+
+- <K>L</K>
 
 Show all sessions
 
@@ -87,13 +92,27 @@ Attach to last session by NAME
 - <T client:load>tmux attach -t NAME</T>
 - <T client:load>tmux attach-session -t NAME</T>
 
-Goto previous session
+Detach from session
 
-- <K>(</K>
+- <K>d</K>
 
-Goto next session
+Detach others on the session (todo)
 
-- <K>)</K>
+- <M client:load>attach -d</M>
+
+Choose session to detach from
+
+- <K>D</K>
+
+</div>
+
+### Organization
+
+<div class="grid grid-cols-1 sm:grid-cols-2 prose-p:my-0">
+Rename session
+
+- <K>$</K>
+- <M client:load>rename-session NAME</M>
 
 </div>
 
@@ -102,7 +121,9 @@ Goto next session
 
 ## Windows
 
-<div class="grid grid-cols-1 sm:grid-cols-2 prose-p:my-0">
+### Create and delete
+
+<div class="prose-p:my-0 grid grid-cols-1 sm:grid-cols-2">
 
 Start session with session and window name
 
@@ -112,13 +133,18 @@ Create window
 
 - <K>c</K>
 
-Rename current window
-
-- <K>,</K>
-
 Close current window
 
 - <K>&</K>
+</div>
+
+### Navigation
+
+<div class="prose-p:my-0 grid grid-cols-1 sm:grid-cols-2">
+
+Search for window
+
+- <K>f</K>
 
 List windows
 
@@ -139,6 +165,15 @@ Switch window by number
 Switch to last active window
 
 - <K>l</K>
+</div>
+
+### Organization
+
+<div class="prose-p:my-0 grid grid-cols-1 sm:grid-cols-2">
+
+Rename current window
+
+- <K>,</K>
 
 <div>
 
@@ -174,16 +209,23 @@ Renumber windows to remove gap in the sequence (todo)
 - <M client:load>movew -r</M>
 
 </div>
+
+### Misc
+
+<div class="prose-p:my-0 grid grid-cols-1 sm:grid-cols-2">
+Display information about the current window
+
+- <K>i</K>
+
+</div>
 </section>
 <section>
 
 ## Panes
 
+### Create and delete
+
 <div class="grid grid-cols-1 sm:grid-cols-2 prose-p:my-0">
-
-Toggle last active pane (sync with window)
-
-- <K>;</K>
 
 Create horizontal split
 
@@ -195,21 +237,15 @@ Create vertical split
 - <K>"</K>
 - <M client:load>split-window -v</M>
 
-Join two windows as panes (Merge window 2 to window 1 as panes) ????
+Close current pane
 
-- <M client:load>join-pane -s 2 -t 1</M>
+- <K>x</K>
 
-Move pane from one window to another (Move pane 1 from window 2 to pane after 0 of window 1) ????
+</div>
 
-- <M client:load>join-pane -s 2.1 -t 1.0</M>
+### Navigation
 
-Move the current pane left
-
-- <K>\{</K>
-
-Move the current pane right
-
-- <K>}</K>
+<div class="grid grid-cols-1 sm:grid-cols-2 prose-p:my-0">
 
 Switch to pane to the direction
 
@@ -218,15 +254,9 @@ Switch to pane to the direction
 - <K>↓</K>
 - <K>←</K>
 
-Toggle synchronize-panes(send command to all panes)
+Switch to last active pane
 
-- <M client:load>setw synchronize-panes</M>
-
-Toggle between pane layouts
-
-- <K>
-    <i>space</i>
-  </K>
+- <K>;</K>
 
 Switch to next pane
 
@@ -238,21 +268,26 @@ Show pane numbers
 
 Switch/select pane by number
 
-- <K>q 0 ... 9</K>
+- <K>0...9</K>
 
 Toggle pane zoom
 
 - <K>z</K>
 
-Convert pane into a window
+</div>
 
-- <K>!</K>
+### Organization
 
-Close current panel
+<div class="grid grid-cols-1 sm:grid-cols-2 prose-p:my-0">
 
-- <K>x</K>
+<div>
+Resize current pane
 
-Resize current pane height (todo)
+<br />
+<b>Note:</b> on MacOS you have to disable Mission Control keyboard shortcuts for
+these to work. (<a href="https://superuser.com/a/1853429">link</a>)
+
+</div>
 
 - <K>+ ↑</K>
 - <K>+ →</K>
@@ -262,7 +297,93 @@ Resize current pane height (todo)
 - <K>ctrl + →</K>
 - <K>ctrl + ↓</K>
 - <K>ctrl + ←</K>
-- https://superuser.com/a/1853429
+
+Spread panes out evenly
+
+- <K>E</K>
+
+Swap current pane with prev
+
+- <K>\{</K>
+
+Swap current pane with next
+
+- <K>}</K>
+
+Rotate panes clockwise
+
+- <K>ctrl + o</K>
+
+Rotate panes counter clockwise
+
+- <K>option + o</K>
+
+Rearrange panes in one of 7 presets
+
+- <K>option + 0...7</K>
+
+Toggle between pane layouts
+
+- <K>space</K>
 
 </div>
+
+### Window
+
+<div class="grid grid-cols-1 sm:grid-cols-2 prose-p:my-0">
+
+Join two windows as panes (Merge window 2 to window 1 as panes) ????
+
+- <M client:load>join-pane -s 2 -t 1</M>
+
+Move pane from one window to another (Move pane 1 from window 2 to pane after 0 of window 1) ????
+
+- <M client:load>join-pane -s 2.1 -t 1.0</M>
+
+Toggle synchronize-panes(send command to all panes)
+
+- <M client:load>setw synchronize-panes</M>
+
+Convert pane into a window
+
+- <K>!</K>
+
+</div>
+
+## Paste Buffer
+
+<div class="grid grid-cols-1 sm:grid-cols-2 prose-p:my-0">
+
+Open selectable list of buffers to paste from
+
+- <K>=</K>
+
+Paste most recent buffer
+
+- <K>]</K>
+
+Delete most recent buffer
+
+- <K>=</K>
+
+</div>
+
+## General
+
+<div class="grid grid-cols-1 sm:grid-cols-2 prose-p:my-0">
+
+List all keybindings
+
+- <K>?</K>
+
+Show the time
+
+- <K>t</K>
+
+Show previous messages from TMUX
+
+- <K>~</K>
+
+</div>
+
 </section>
