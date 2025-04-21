@@ -62,29 +62,32 @@ import { FATHOM_ID } from "astro:env/client";
     <main
       class:list={[
         "col-span-full",
-        "prose dark:prose-invert mx-auto w-full max-w-177",
+        "prose dark:prose-invert mx-auto w-full max-w-177 px-7 py-10 md:px-4",
         "prose-headings:font-(family-name:--font-heading) prose-headings:font-bold",
         "prose-h1:text-6xl",
+        "prose-h1:text-6xl",
+        "prose-ul:my-0",
+        "prose-li:list-none prose-li:first:mt-0",
+        "prose-code:after:hidden prose-code:p-[0.2em_0.4em] prose-code:font-normal prose-code:bg-background prose-code:border-border",
+        "prose-kbd:font-mono prose-kbd:p-[0.2em_0.4em] prose-kbd:rounded-none prose-kbd:bg-background prose-kbd:text-sm",
       ]}
     >
-      <div class="not-found -mr-0 mb-5 -ml-0 flex flex-col px-10 py-6">
+      <div class="mb-5 flex w-full items-center justify-between">
         <h1 class="!m-0">404</h1>
-
-        <p>
-          Whoops! Reach out to <a href="https://www.joshuawootonn.com/"
-            >josh wootonn</a
-          > if this was unexpected. Otherwise here is a link
-          <a href="https://www.tmuxreference.com/">back to the cheat sheet</a>.
-        </p>
       </div>
-      <slot />
+      <p>
+        Whoops! Reach out to <a href="https://www.joshuawootonn.com/"
+          >josh wootonn</a
+        > if this was unexpected. Otherwise here is a link
+        <a href="https://www.tmuxreference.com/">back to the cheat sheet</a>.
+      </p>
     </main>
   </div>
+
   <script
     src="https://cdn.usefathom.com/script.js"
     data-site={FATHOM_ID}
     defer
     is:inline></script>
-
 
 </html>
