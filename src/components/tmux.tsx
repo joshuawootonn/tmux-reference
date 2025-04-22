@@ -26,7 +26,7 @@ export function Tmux({ children }: { children: string }) {
       }}
       className="group bg-background border-border flex w-full items-center justify-between border-[1.5px] text-left"
     >
-      <code className="before:text-symbol truncate before:mr-[3px] before:content-[':']">
+      <code className="before:text-symbol truncate before:mr-[3px] before:!content-[':']">
         {children}
       </code>
       <button
