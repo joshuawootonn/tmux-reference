@@ -8,6 +8,7 @@ author: Josh Wootonn
 import { Tmux as M } from "../components/tmux.tsx";
 import { Keyboard as K } from "../components/keyboard.tsx";
 import { Terminal as T } from "../components/terminal.tsx";
+import { Code } from "astro:components";
 
 <section>
 
@@ -249,7 +250,7 @@ Kill pane
 
 <div class="group-of-shortcuts ">
 
-Switch to pane to the direction
+Goto pane in direction
 
 - <K>↑</K>
 - <K>→</K>
@@ -258,11 +259,32 @@ Switch to pane to the direction
 
 <div>
 
-Goto next pane
+Goto pane in direction (VIM style)
 
-Fun fact: there is no builtin shortcut for going to prev pane.
+<br />
+
+This requires updating your tmux.conf
+
+<Code
+  code={`bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+`}
+  lang="shell"
+/>
 
 </div>
+
+- <kbd class="!ml-3.5">ctrl + h</kbd>
+- <kbd class="!ml-3.5">ctrl + j</kbd>
+- <kbd class="!ml-3.5">ctrl + k</kbd>
+- <kbd class="!ml-3.5">ctrl + l</kbd>
+
+Goto next pane
+
+<br />
+<b>Fun fact:</b> there is no builtin shortcut for going to prev pane.
 
 - <K>o</K>
 
