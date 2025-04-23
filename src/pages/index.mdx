@@ -15,25 +15,29 @@ import { Terminal as T } from "../components/terminal.tsx";
 
 ### Create and delete
 
-<div class="grid grid-cols-1 sm:grid-cols-2 prose-p:my-0">
+<div class="group-of-shortcuts ">
 
-Start new session
+Create new session
 
 - <T client:load>tmux</T>
 - <T client:load>tmux new</T>
 - <T client:load>tmux new-session</T>
 - <M client:load>new</M>
 
-Start a new session by name
+Create new session with name
 
 - <T client:load>tmux new-session -s NAME</T>
 - <M client:load>new -s NAME</M>
 
-Start or attach to session by name
+Create new session with session and window name
+
+- <T client:load>tmux new -s S_NAME -n W_NAME</T>
+
+Create or attach to session with name
 
 - <T client:load>tmux new-session -A -s NAME</T>
 
-Kill current session
+Kill session
 
 - <M client:load>kill-session</M>
 
@@ -46,7 +50,7 @@ Kill other sessions
 
 - <T client:load>tmux kill-session -a</T>
 
-Kill all sessions except NAME
+Kill all sessions except
 
 - <T client:load>tmux kill-session -a -t NAME</T>
 
@@ -54,7 +58,17 @@ Kill all sessions except NAME
 
 ### Navigation
 
-<div class="prose-p:my-0 grid grid-cols-1 sm:grid-cols-2">
+<div class=" group-of-shortcuts">
+
+List sessions
+
+- <T client:load>tmux ls</T>
+- <T client:load>tmux list-sessions</T>
+- <K>s</K>
+
+List sessions w/ windows
+
+- <K>w</K>
 
 Goto previous session
 
@@ -64,19 +78,9 @@ Goto next session
 
 - <K>)</K>
 
-Switch to last active session
+Goto last active session
 
 - <K>L</K>
-
-Show all sessions
-
-- <T client:load>tmux ls</T>
-- <T client:load>tmux list-sessions</T>
-- <K>s</K>
-
-Show all sessions w/ windows
-
-- <K>w</K>
 
 Attach to last session
 
@@ -85,7 +89,7 @@ Attach to last session
 - <T client:load>tmux attach</T>
 - <T client:load>tmux attach-session</T>
 
-Attach to last session by NAME
+Attach to session by NAME
 
 - <T client:load>tmux a -t NAME</T>
 - <T client:load>tmux at -t NAME</T>
@@ -100,7 +104,7 @@ Detach others on the session (todo)
 
 - <M client:load>attach -d</M>
 
-Choose session to detach from
+Show list of sessions to detatch from
 
 - <K>D</K>
 
@@ -108,7 +112,7 @@ Choose session to detach from
 
 ### Organization
 
-<div class="grid grid-cols-1 sm:grid-cols-2 prose-p:my-0">
+<div class="group-of-shortcuts ">
 Rename session
 
 - <K>$</K>
@@ -123,24 +127,21 @@ Rename session
 
 ### Create and delete
 
-<div class="prose-p:my-0 grid grid-cols-1 sm:grid-cols-2">
-
-Start session with session and window name
-
-- <T client:load>tmux new -s SESSION_NAME -n WINDOW_NAME</T>
+<div class=" group-of-shortcuts">
 
 Create window
 
 - <K>c</K>
 
-Close current window
+Kill window
 
 - <K>&</K>
+
 </div>
 
 ### Navigation
 
-<div class="prose-p:my-0 grid grid-cols-1 sm:grid-cols-2">
+<div class=" group-of-shortcuts">
 
 Search for window
 
@@ -158,18 +159,19 @@ Goto next window
 
 - <K>n</K>
 
+Goto last active window
+
+- <K>l</K>
+
 Switch window by number
 
 - <K>0 ... 9</K>
 
-Switch to last active window
-
-- <K>l</K>
 </div>
 
 ### Organization
 
-<div class="prose-p:my-0 grid grid-cols-1 sm:grid-cols-2">
+<div class=" group-of-shortcuts">
 
 Rename current window
 
@@ -179,8 +181,8 @@ Rename current window
 
 Swap window order (absolute)
 
-- `-s` = source
-- `-t` = target
+- <code class="px-0">-s</code> = source
+- <code class="px-0">-t</code> = target
 
 </div>
 
@@ -212,7 +214,7 @@ Renumber windows to remove gap in the sequence (todo)
 
 ### Misc
 
-<div class="prose-p:my-0 grid grid-cols-1 sm:grid-cols-2">
+<div class=" group-of-shortcuts">
 Display information about the current window
 
 - <K>i</K>
@@ -223,9 +225,9 @@ Display information about the current window
 
 ## Panes
 
-### Create and delete
+### Create and kill
 
-<div class="grid grid-cols-1 sm:grid-cols-2 prose-p:my-0">
+<div class="group-of-shortcuts ">
 
 Create horizontal split
 
@@ -237,7 +239,7 @@ Create vertical split
 - <K>"</K>
 - <M client:load>split-window -v</M>
 
-Close current pane
+Kill pane
 
 - <K>x</K>
 
@@ -245,7 +247,7 @@ Close current pane
 
 ### Navigation
 
-<div class="grid grid-cols-1 sm:grid-cols-2 prose-p:my-0">
+<div class="group-of-shortcuts ">
 
 Switch to pane to the direction
 
@@ -254,13 +256,19 @@ Switch to pane to the direction
 - <K>↓</K>
 - <K>←</K>
 
-Switch to last active pane
+<div>
 
-- <K>;</K>
+Goto next pane
 
-Switch to next pane
+Fun fact: there is no builtin shortcut for going to prev pane.
+
+</div>
 
 - <K>o</K>
+
+Goto last active pane
+
+- <K>;</K>
 
 Show pane numbers
 
@@ -278,7 +286,7 @@ Toggle pane zoom
 
 ### Organization
 
-<div class="grid grid-cols-1 sm:grid-cols-2 prose-p:my-0">
+<div class="group-of-shortcuts ">
 
 <div>
 Resize current pane
@@ -330,7 +338,7 @@ Toggle between pane layouts
 
 ### Window
 
-<div class="grid grid-cols-1 sm:grid-cols-2 prose-p:my-0">
+<div class="group-of-shortcuts ">
 
 Join two windows as panes (Merge window 2 to window 1 as panes) ????
 
@@ -352,7 +360,7 @@ Convert pane into a window
 
 ## Paste Buffer
 
-<div class="grid grid-cols-1 sm:grid-cols-2 prose-p:my-0">
+<div class="group-of-shortcuts ">
 
 Open selectable list of buffers to paste from
 
@@ -370,7 +378,7 @@ Delete most recent buffer
 
 ## General
 
-<div class="grid grid-cols-1 sm:grid-cols-2 prose-p:my-0">
+<div class="group-of-shortcuts ">
 
 List all keybindings
 

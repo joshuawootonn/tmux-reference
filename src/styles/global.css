@@ -164,6 +164,10 @@ button:focus-visible {
   background-position-x: -76.2px;
 }
 
+.group-of-shortcuts {
+  @apply grid grid-cols-1 gap-y-4 sm:grid-cols-2;
+}
+
 .dark .footer-pattern {
   filter: invert(1);
 }
