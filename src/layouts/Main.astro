@@ -70,13 +70,15 @@ import { FATHOM_ID } from "astro:env/client";
         "prose-h3:text-2xl",
         "prose-ul:my-0",
         "prose-li:list-none prose-li:first:mt-0",
-        "prose-kbd:font-mono prose-kbd:p-[0.2em_0.4em] prose-kbd:text-[var(--tw-prose-body)] prose-kbd:rounded-none prose-kbd:bg-background prose-kbd:mr-0.5",
-        "prose-p:text-lg prose-p:my-0",
+        "prose-kbd:font-mono prose-kbd:p-[0.2em_0.4em] prose-kbd:text-[var(--tw-prose-body)] prose-kbd:rounded-none prose-kbd:bg-background prose-kbd:mr-0.5 prose-kbd:text-base prose-kbd:ml-3.5",
+        "prose-p:text-lg",
         "prose-pre:!bg-background prose-pre:!border-border prose-pre:!border-[1.5px] prose-pre:rounded-none",
         "[&_pre>code]:text-foreground [&_pre>code]:border-none [&_pre>code]:p-0",
-        "[&_details[open]]:bg-background [&_details]:-mt-2 [&_details]:-mb-0 [&_details]:self-start [&_details]:p-2 [&_details_*]:text-sm [&_details_*]:leading-6",
+        "[&_details_kbd]:text-small [&_details_kbd]:ml-0",
+        "[&_.group-of-shortcuts_p]:my-0 [&_details_p]:my-0",
+        "[&_details[open]]:bg-background [&_details]:-mt-2 [&_details]:-mb-0 [&_details]:self-start [&_details]:p-2 [&_details_*]:text-sm [&_details_*]:leading-7",
         "prose-code:border-2 prose-code:text-sm prose-code:p-[0.2em_0.4em] prose-code:after:content-none prose-code:before:content-none",
-        "[&_summary]:marker:text-symbol [&_summary]:-ml-5.5 [&_summary]:text-lg [&_summary]:marker:-translate-x-2",
+        "[&_summary]:marker:text-symbol [&_summary]:mb-3 [&_summary]:-ml-5.5 [&_summary]:text-lg [&_summary]:marker:-translate-x-2",
       ]}
     >
       <div class="mb-5 flex w-full items-center justify-between">

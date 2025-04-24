@@ -153,6 +153,7 @@
     3px 3px var(--border);
 }
 
+summary:focus-visible,
 link:focus-visible,
 button:focus-visible {
   @apply focus-visible:border-ring focus-visible:ring-ring outline-none focus-visible:ring-[1.5px];

@@ -78,7 +78,6 @@ Goto previous session
 <details>
 <summary>Goto next session</summary>
 
-<br />
 For this to be helpful, you need to know what the next session is. That can be
 hard to find if you rename sessions because <kbd>ctrl + b</kbd> + <kbd>s</kbd>
 's default order is by name.
@@ -180,8 +179,6 @@ Goto next window
 
 <details>
 <summary>Goto prev/next window (VIM style)</summary>
-
-<br />
 
 This requires updating your tmux.conf
 
@@ -294,8 +291,6 @@ Goto pane in direction
 <details>
 <summary>Goto pane in direction (VIM style)</summary>
 
-<br />
-
 This requires updating your tmux.conf
 
 ```
@@ -316,7 +311,6 @@ bind l select-pane -R
 
 <summary>Goto next pane</summary>
 
-<br />
 <b>Fun fact:</b> there is no builtin shortcut for going to prev pane.
 
 </details>
@@ -348,7 +342,6 @@ Toggle pane zoom
 <details>
 <summary>Resize current pane</summary>
 
-<br />
 <b>Note:</b> on MacOS you have to disable Mission Control keyboard shortcuts for
 these to work. (<a href="https://superuser.com/a/1853429">link</a>)
 
@@ -431,19 +424,94 @@ Convert pane into a window
 
 </div>
 
-## Paste Buffer
+## Copy Buffer
 
-<div class="group-of-shortcuts ">
+Aside from _entering copy mode_ and _pasting your most recent buffer_, all these commands assume that you are already in copy mode.
 
-Open selectable list of buffers to paste from
+Unless specified VIM keybindings are enable with `set -g mode-keys vi`. This section assumes you have this enabled. I would recommend adding this to your `~/.tmux.conf` file.
 
-- <K>=</K>
+<div class="group-of-shortcuts">
+
+Enter copy mode
+
+- <K>]</K>
+
+Exit copy mode
+
+- <K>esc</K>
+- <K>q</K> (VIM)
+
+Navigate in copy mode
+
+- <kbd>ctrl + ↑</kbd>
+- <kbd>ctrl + →</kbd>
+- <kbd>ctrl + ↓</kbd>
+- <kbd>ctrl + ←</kbd>
+- <kbd>h</kbd> (VIM)
+- <kbd>j</kbd> (VIM)
+- <kbd>k</kbd> (VIM)
+- <kbd>l</kbd> (VIM)
+
+<details>
+
+<summary>Start selection</summary>
+
+This VIM keybinding is custom and can be bound with
+
+```
+bind-key -T copy-mode-vi 'v' send -X begin-selection
+```
+
+<a href="https://blog.sanctum.geek.nz/vi-mode-in-tmux/">(Link)</a>
+
+</details>
+
+- <kbd class="!ml-3.5">space</kbd>
+- <kbd class="!ml-3.5">v</kbd> (VIM)
+
+<details>
+
+<summary>Copy selection</summary>
+
+This VIM keybinding is custom and can be bound with
+
+```
+bind-key -T copy-mode-vi 'y' send -X copy-selection-and-cancel
+```
+
+<a href="https://blog.sanctum.geek.nz/vi-mode-in-tmux/">(Link)</a>
+
+</details>
+
+- <kbd class="!ml-3.5">enter</kbd>
+- <kbd class="!ml-3.5">y</kbd> (VIM)
+
+Search window history
+
+- <kbd class="!ml-3.5">?</kbd>
+- <kbd class="!ml-3.5">/</kbd> (VIM)
+
+Goto top of history
+
+- <kbd class="!ml-3.5">g</kbd>
+
+Goto bottom of history
+
+- <kbd class="!ml-3.5">G</kbd>
+
+Goto next search result
+
+- <kbd class="!ml-3.5">n</kbd>
+
+Goto previous search result
+
+- <kbd class="!ml-3.5">N</kbd>
 
 Paste most recent buffer
 
 - <K>]</K>
 
-Delete most recent buffer
+Open copy history to paste
 
 - <K>=</K>
 
