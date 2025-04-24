@@ -533,6 +533,26 @@ Show previous messages from TMUX
 
 - <K>~</K>
 
+<details>
+<summary>Clearing window history</summary>
+
+```
+bind-key -n C-l send-keys C-l \; send-keys -R \; clear-history
+```
+
+</details>
+
+- <T>tmux clear-history</T>
+- <M>clear-history</M>
+- <K>ctrl + l</K> (w/ config)
+
+Sourcing your tmux.conf
+
+- <T>tmux source-file ~/.tmux.conf</T>
+- <T>tmux set -g prefix C-a</T>
+- <M>source-file ~/.tmux.conf</M>
+- <M>set -g prefix C-a</M>
+
 </div>
 
 </section>
