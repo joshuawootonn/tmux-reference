@@ -160,6 +160,24 @@ Goto next window
 
 - <K>n</K>
 
+<div>
+
+Goto prev/next window (VIM style)
+
+<br />
+
+This requires updating your tmux.conf
+
+```
+bind -n M-H previous-window
+bind -n M-L next-window
+```
+
+</div>
+
+- <kbd class="!ml-3.5">ctrl + shift + h</kbd>
+- <kbd class="!ml-3.5">ctrl + shift + l</kbd>
+
 Goto last active window
 
 - <K>l</K>
@@ -265,14 +283,12 @@ Goto pane in direction (VIM style)
 
 This requires updating your tmux.conf
 
-<Code
-  code={`bind h select-pane -L
+```
+bind h select-pane -L
 bind j select-pane -D
 bind k select-pane -U
 bind l select-pane -R
-`}
-  lang="shell"
-/>
+```
 
 </div>
 
@@ -281,10 +297,14 @@ bind l select-pane -R
 - <kbd class="!ml-3.5">ctrl + k</kbd>
 - <kbd class="!ml-3.5">ctrl + l</kbd>
 
+<div>
+
 Goto next pane
 
 <br />
 <b>Fun fact:</b> there is no builtin shortcut for going to prev pane.
+
+</div>
 
 - <K>o</K>
 
@@ -319,10 +339,10 @@ these to work. (<a href="https://superuser.com/a/1853429">link</a>)
 
 </div>
 
-- <K>+ ↑</K>
-- <K>+ →</K>
-- <K>+ ↓</K>
-- <K>+ ←</K>
+- <kbd class="!ml-3.5">ctrl + b + ↑</kbd>
+- <kbd class="!ml-3.5">ctrl + b + →</kbd>
+- <kbd class="!ml-3.5">ctrl + b + ↓</kbd>
+- <kbd class="!ml-3.5">ctrl + b + ←</kbd>
 - <K>ctrl + ↑</K>
 - <K>ctrl + →</K>
 - <K>ctrl + ↓</K>
@@ -348,11 +368,11 @@ Rotate panes counter clockwise
 
 - <K>option + o</K>
 
-Rearrange panes in one of 7 presets
+Rearrange panes in 1 of 7 layout presets
 
 - <K>option + 0...7</K>
 
-Toggle between pane layouts
+Cycle through layout presets
 
 - <K>space</K>
 
@@ -366,11 +386,27 @@ Join two windows as panes (Merge window 2 to window 1 as panes) ????
 
 - <M client:load>join-pane -s 2 -t 1</M>
 
-Move pane from one window to another (Move pane 1 from window 2 to pane after 0 of window 1) ????
+<div>
 
-- <M client:load>join-pane -s 2.1 -t 1.0</M>
+Move pane from one window to another
 
-Toggle synchronize-panes(send command to all panes)
+<br />
+
+The example moves pane 1 in window 2 to window 1 right after the 3rd pane.
+
+</div>
+
+- <M client:load>join-pane -s 2.1 -t 1.3</M>
+
+<div>
+
+Toggle synchronize-panes
+
+<br />
+
+Setting this option on will send the same command to each pane.
+
+</div>
 
 - <M client:load>setw synchronize-panes</M>
 

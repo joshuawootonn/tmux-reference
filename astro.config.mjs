@@ -22,14 +22,6 @@ export default defineConfig({
     mdx(),
     react(),
   ],
-  markdown: {
-    shikiConfig: {
-      themes: {
-        light: "github-light-high-contrast",
-        dark: "github-dark-high-contrast",
-      },
-    },
-  },
   env: {
     schema: {
       FATHOM_ID: envField.string({
