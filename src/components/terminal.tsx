@@ -23,9 +23,9 @@ export function Terminal({ children }: { children: string }) {
         navigator.clipboard.writeText(content);
         copy();
       }}
-      className="group bg-background border-border flex w-full items-center justify-between border-[1.5px] text-left"
+      className="not-prose group bg-background border-border flex w-full items-center justify-between border-[1.5px] text-left"
     >
-      <code className="before:text-symbol truncate before:mr-[3px] before:!content-['$']">
+      <code className="before:text-symbol bg-background truncate border-none p-[0.2em_0.4em] text-base font-normal before:mr-[3px] before:content-['$'] after:hidden">
         {children}
       </code>
       <button

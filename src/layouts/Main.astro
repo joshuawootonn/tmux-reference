@@ -70,11 +70,12 @@ import { FATHOM_ID } from "astro:env/client";
         "prose-h3:text-2xl",
         "prose-ul:my-0",
         "prose-li:list-none prose-li:first:mt-0",
-        "prose-code:after:hidden prose-code:before:content-['_'] prose-code:p-[0.2em_0.4em] prose-code:text-base prose-code:font-normal prose-code:bg-background prose-code:border-border",
-        "prose-kbd:font-mono prose-kbd:p-[0.2em_0.4em] prose-kbd:rounded-none prose-kbd:bg-background prose-kbd:text-base",
+        "prose-kbd:font-mono prose-kbd:p-[0.2em_0.4em] prose-kbd:text-[var(--tw-prose-body)] prose-kbd:rounded-none prose-kbd:bg-background prose-kbd:text-base",
         "prose-p:text-lg prose-p:my-0",
-        "prose-pre:!bg-background prose-pre:!border-border prose-pre:!border-[1.5px] prose-pre:rounded-none [&_pre>code]:text-foreground [&_pre>code]:p-0 [&_pre>code]:text-sm [&_pre>code:before]:!content-none",
-        "[&_div_div_p:not(:first-child)]:text-sm",
+        "prose-pre:!bg-background prose-pre:!border-border prose-pre:!border-[1.5px] prose-pre:rounded-none",
+        "[&_pre>code]:text-foreground [&_pre>code]:border-none [&_pre>code]:p-0",
+        "[&_div_div_p:not(:first-child)]:text-sm [&_div_div_p:not(:first-child)]:leading-6",
+        "prose-code:border-2 prose-code:text-sm prose-code:p-[0.2em_0.4em] prose-code:after:content-none prose-code:before:content-none",
       ]}
     >
       <div class="mb-5 flex w-full items-center justify-between">
