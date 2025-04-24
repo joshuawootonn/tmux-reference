@@ -75,7 +75,21 @@ Goto previous session
 
 - <K>(</K>
 
+<div>
+
 Goto next session
+
+<br />
+For this to be helpful your need to know what the next session is hard to find
+if you rename sessions because `ctrl + b` + `s` orders sessions by name.
+
+To order your sessions by index instead you can use add this snippet to your `~/tmux.conf`
+
+```
+bind s choose-tree -sZ -O index
+```
+
+</div>
 
 - <K>)</K>
 
