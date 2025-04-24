@@ -178,9 +178,8 @@ Goto next window
 
 - <K>n</K>
 
-<div>
-
-Goto prev/next window (VIM style)
+<details>
+<summary>Goto prev/next window (VIM style)</summary>
 
 <br />
 
@@ -191,7 +190,7 @@ bind -n M-H previous-window
 bind -n M-L next-window
 ```
 
-</div>
+</details>
 
 - <kbd class="!ml-3.5">ctrl + shift + h</kbd>
 - <kbd class="!ml-3.5">ctrl + shift + l</kbd>
@@ -214,14 +213,13 @@ Rename current window
 
 - <K>,</K>
 
-<div>
+<details>
+<summary>Swap window order (absolute)</summary>
 
-Swap window order (absolute)
+- `-s` = source
+- `-t` = target
 
-- <code class="px-0">-s</code> = source
-- <code class="px-0">-t</code> = target
-
-</div>
+</details>
 
 - <M client:load>swap-window -s 2 -t</M>
 
@@ -293,9 +291,8 @@ Goto pane in direction
 - <K>↓</K>
 - <K>←</K>
 
-<div>
-
-Goto pane in direction (VIM style)
+<details>
+<summary>Goto pane in direction (VIM style)</summary>
 
 <br />
 
@@ -308,21 +305,21 @@ bind k select-pane -U
 bind l select-pane -R
 ```
 
-</div>
+</details>
 
 - <kbd class="!ml-3.5">ctrl + h</kbd>
 - <kbd class="!ml-3.5">ctrl + j</kbd>
 - <kbd class="!ml-3.5">ctrl + k</kbd>
 - <kbd class="!ml-3.5">ctrl + l</kbd>
 
-<div>
+<details>
 
-Goto next pane
+<summary>Goto next pane</summary>
 
 <br />
 <b>Fun fact:</b> there is no builtin shortcut for going to prev pane.
 
-</div>
+</details>
 
 - <K>o</K>
 
@@ -348,14 +345,14 @@ Toggle pane zoom
 
 <div class="group-of-shortcuts ">
 
-<div>
-Resize current pane
+<details>
+<summary>Resize current pane</summary>
 
 <br />
 <b>Note:</b> on MacOS you have to disable Mission Control keyboard shortcuts for
 these to work. (<a href="https://superuser.com/a/1853429">link</a>)
 
-</div>
+</details>
 
 - <kbd class="!ml-3.5">ctrl + b + ↑</kbd>
 - <kbd class="!ml-3.5">ctrl + b + →</kbd>
