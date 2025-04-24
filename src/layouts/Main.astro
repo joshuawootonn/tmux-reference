@@ -42,7 +42,7 @@ import { FATHOM_ID } from "astro:env/client";
     <meta name="googlebot" content="index,follow" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@JoshWootonn" />
-    <meta property="og:title" content="Josh Wootonn" />
+    <meta property="og:title" content={frontmatter.title} />
     <meta property="og:description" content={frontmatter.description} />
     <meta property="og:image" content="/seo.png" />
     <meta property="og:image:alt" content="TMUX Reference logo" />
