@@ -536,9 +536,13 @@ Show previous messages from TMUX
 <details>
 <summary>Clearing window history</summary>
 
+You can also bing this to a specific key with something like `ctrl + l`.
+
 ```
 bind-key -n C-l send-keys C-l \; send-keys -R \; clear-history
 ```
+
+[(link)](https://stackoverflow.com/a/46618025)
 
 </details>
 
@@ -546,7 +550,12 @@ bind-key -n C-l send-keys C-l \; send-keys -R \; clear-history
 - <M>clear-history</M>
 - <K>ctrl + l</K> (w/ config)
 
-Sourcing your tmux.conf
+<details>
+
+<summary>Sourcing your tmux.conf </summary>
+
+<a href="https://superuser.com/a/580999">(link)</a>
+</details>
 
 - <T>tmux source-file ~/.tmux.conf</T>
 - <T>tmux set -g prefix C-a</T>
