@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
 import { useState } from "react";
 type Heading = { depth: number; slug: string; text: string };
@@ -14,14 +15,14 @@ function HeadingPlaceholder({ heading }: { heading: Heading }) {
 function Heading({ heading }: { heading: Heading }) {
   if (heading.depth == 2) {
     return (
-      <h2 className="text-sidebar-foreground hover:text-sidebar-foreground/70 dark:hover:text-sidebar-foreground/80">
+      <h2 className="text-sidebar-foreground hover:text-sidebar-foreground/70 dark:hover:text-sidebar-foreground/80 inline-block">
         {heading.text}
       </h2>
     );
   }
 
   return (
-    <h3 className="text-sidebar-secondary hover:text-sidebar-secondary/80 pl-3">
+    <h3 className="text-sidebar-secondary hover:text-sidebar-secondary/80 inline-block">
       {heading.text}
     </h3>
   );
@@ -34,8 +35,12 @@ export function TableOfContent({ headings }: { headings: Headings }) {
     <motion.nav
       initial="closed"
       whileHover="open"
+      onFocus={() => setOpen(true)}
+      onPointerOut={() => setOpen(false)}
+      onPointerLeave={() => setOpen(false)}
+      onClick={() => setOpen(false)}
       animate={open ? "open" : "closed"}
-      className="group not-prose fixed top-1/2 left-1 z-50 hidden -translate-y-1/2 sm:block"
+      className="group not-prose group fixed top-1/2 left-1 z-50 hidden -translate-y-1/2 sm:block"
     >
       <motion.div
         variants={{
@@ -59,10 +64,16 @@ export function TableOfContent({ headings }: { headings: Headings }) {
         }}
         transition={{ duration: 0.1 }}
         style={{ originX: 0 }}
-        className="bg-background border-border absolute top-1/2 -translate-y-1/2 border-2 px-5 py-3"
+        className="bg-background border-border absolute top-1/2 -translate-y-1/2 space-y-0.5 border-2 px-4 py-3"
       >
         {headings.map((heading) => (
-          <a className="scroll-ps-30" href={`#${heading.slug}`}>
+          <a
+            className={cn(
+              "block scroll-ps-30 text-[15px] whitespace-nowrap",
+              heading.depth === 3 && "ml-3",
+            )}
+            href={`#${heading.slug}`}
+          >
             <Heading heading={heading} />
           </a>
         ))}

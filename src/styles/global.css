@@ -156,7 +156,7 @@
 }
 
 summary:focus-visible,
-link:focus-visible,
+a:focus-visible,
 button:focus-visible {
   @apply focus-visible:border-ring focus-visible:ring-ring outline-none focus-visible:ring-[1.5px];
 }
