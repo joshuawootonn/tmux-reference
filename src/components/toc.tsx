@@ -1,3 +1,5 @@
+import { motion } from "motion/react";
+import { useState } from "react";
 type Heading = { depth: number; slug: string; text: string };
 type Headings = Heading[];
 
@@ -26,20 +28,45 @@ function Heading({ heading }: { heading: Heading }) {
 }
 
 export function TableOfContent({ headings }: { headings: Headings }) {
+  const [open, setOpen] = useState(false);
+
   return (
-    <nav className="group not-prose fixed top-1/2 right-1 z-50 -translate-y-1/2 sm:right-[unset] sm:left-1">
-      <div className="bg-background border-border space-y-2 border-2 px-3 py-3">
+    <motion.nav
+      initial="closed"
+      whileHover="open"
+      animate={open ? "open" : "closed"}
+      className="group not-prose fixed top-1/2 left-1 z-50 hidden -translate-y-1/2 sm:block"
+    >
+      <motion.div
+        variants={{
+          open: { scale: 1.5 },
+          closed: { scale: 1 },
+        }}
+        transition={{ duration: 0.1 }}
+        style={{
+          originX: 0,
+        }}
+        className="bg-background border-border space-y-2 border-2 px-3 py-3"
+      >
         {headings.map((heading) => (
           <HeadingPlaceholder heading={heading} />
         ))}
-      </div>
-      <div className="bg-background border-border absolute top-1/2 -translate-y-1/2 border-2 px-5 py-3 opacity-0 group-hover:opacity-100">
+      </motion.div>
+      <motion.div
+        variants={{
+          open: { opacity: 1, scale: 1, x: 0 },
+          closed: { opacity: 0, scale: 0.9, x: -5 },
+        }}
+        transition={{ duration: 0.1 }}
+        style={{ originX: 0 }}
+        className="bg-background border-border absolute top-1/2 -translate-y-1/2 border-2 px-5 py-3"
+      >
         {headings.map((heading) => (
           <a className="scroll-ps-30" href={`#${heading.slug}`}>
             <Heading heading={heading} />
           </a>
         ))}
-      </div>
-    </nav>
+      </motion.div>
+    </motion.nav>
   );
 }
