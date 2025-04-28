@@ -51,27 +51,40 @@ export function TableOfContent({ headings }: { headings: Headings }) {
         style={{
           originX: 0,
         }}
-        className="bg-background border-border space-y-2 border-2 px-3 py-3"
+        className="bg-background border-border relative z-0 space-y-2 border-2 px-3 py-3"
       >
+        <div className="absolute inset-0 -m-10"></div>
         {headings.map((heading) => (
           <HeadingPlaceholder heading={heading} />
         ))}
       </motion.div>
       <motion.div
         variants={{
-          open: { opacity: 1, scale: 1, x: 0 },
-          closed: { opacity: 0, scale: 0.9, x: -5 },
+          open: {
+            display: "block",
+            opacity: 1,
+            scale: 1,
+            x: 0,
+          },
+          closed: {
+            opacity: 0,
+            scale: 0.9,
+            x: -5,
+            transitionEnd: { display: "none" },
+          },
         }}
         transition={{ duration: 0.1 }}
         style={{ originX: 0 }}
-        className="bg-background border-border absolute top-1/2 -translate-y-1/2 space-y-0.5 border-2 px-4 py-3"
+        className="bg-background border-border absolute top-1/2 z-0 -translate-y-1/2 space-y-0.5 border-2 px-4 py-3"
       >
+        <div className="absolute inset-0 -m-10"></div>
         {headings.map((heading) => (
           <a
             className={cn(
               "block scroll-ps-30 text-[15px] whitespace-nowrap",
               heading.depth === 3 && "ml-3",
             )}
+            key={heading.slug}
             href={`#${heading.slug}`}
           >
             <Heading heading={heading} />
