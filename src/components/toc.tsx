@@ -77,7 +77,7 @@ export function TableOfContent({ headings }: { headings: Headings }) {
         style={{ originX: 0 }}
         className="bg-background border-border absolute top-1/2 z-0 -translate-y-1/2 space-y-0.5 border-2 px-4 py-3"
       >
-        <div className="absolute inset-0 -m-10"></div>
+        <div className="absolute inset-0 -z-10 -m-10"></div>
         {headings.map((heading) => (
           <a
             className={cn(
