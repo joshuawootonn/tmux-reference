@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
-import { useState } from "react";
+import { useCallback, useRef, useState } from "react";
 type Heading = { depth: number; slug: string; text: string };
 type Headings = Heading[];
 
@@ -29,16 +29,52 @@ function Heading({ heading }: { heading: Heading }) {
 }
 
 export function TableOfContent({ headings }: { headings: Headings }) {
-  const [open, setOpen] = useState(false);
+  const [open, _setOpen] = useState(false);
+  const justClosed = useRef(false);
+
+  const setOpen = useCallback(
+    (next: boolean) => {
+      if (!next && open) {
+        _setOpen(next);
+
+        justClosed.current = true;
+        const id = setTimeout(() => {
+          justClosed.current = false;
+        }, 1000);
+
+        return () => clearTimeout(id);
+      } else if (next && !open && justClosed.current) {
+        //noop
+      } else {
+        _setOpen(next);
+      }
+    },
+    [open],
+  );
 
   return (
     <motion.nav
       initial="closed"
-      whileHover="open"
-      onFocus={() => setOpen(true)}
-      onPointerOut={() => setOpen(false)}
-      onPointerLeave={() => setOpen(false)}
-      onClick={() => setOpen(false)}
+      onFocus={() => {
+        return setOpen(true);
+      }}
+      onPointerMove={() => {
+        return setOpen(true);
+      }}
+      onPointerEnter={() => {
+        return setOpen(true);
+      }}
+      onPointerOut={(e) => {
+        // Don't fire for children elements
+        if (e.currentTarget !== e.target) return;
+        return setOpen(false);
+      }}
+      onPointerLeave={() => {
+        return setOpen(false);
+      }}
+      onClick={() => {
+        return setOpen(false);
+      }}
       animate={open ? "open" : "closed"}
       className="group not-prose group fixed top-1/2 left-1 z-50 hidden -translate-y-1/2 sm:block"
     >
