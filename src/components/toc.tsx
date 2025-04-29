@@ -40,7 +40,7 @@ export function TableOfContent({ headings }: { headings: Headings }) {
         justClosed.current = true;
         const id = setTimeout(() => {
           justClosed.current = false;
-        }, 1000);
+        }, 600);
 
         return () => clearTimeout(id);
       } else if (next && !open && justClosed.current) {
