@@ -6,7 +6,7 @@ import "@fontsource-variable/dm-sans";
 import "../styles/global.css";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { FATHOM_ID } from "astro:env/client";
-import { TableOfContent } from "@/components/toc";
+import { FloatingTableOfContent, TableOfContent } from "@/components/toc";
 
 const { headings } = Astro.props;
 ---
@@ -64,7 +64,7 @@ const { headings } = Astro.props;
       "page",
     ]}
   >
-    <TableOfContent client:load headings={headings} />
+    <FloatingTableOfContent client:load headings={headings} />
     <main
       class:list={[
         "col-span-full",
@@ -90,6 +90,9 @@ const { headings } = Astro.props;
       </div>
       <p class="!mb-4">A quick reference for all the TMUX shortcuts.</p>
       <ThemeToggle client:load />
+      <div class="not-prose mt-2 block sm:hidden">
+        <TableOfContent client:load headings={headings} />
+      </div>
 
       <slot />
     </main>

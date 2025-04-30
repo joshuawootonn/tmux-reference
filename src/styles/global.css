@@ -91,8 +91,10 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
-.prose h2 {
-  @apply sticky top-3 z-0 -mr-0 -ml-3 px-3 py-3 text-5xl;
+.prose {
+  & :is(:where(h2):not(:where([class~="not-prose"], [class~="not-prose"] *))) {
+    @apply sticky top-3 z-0 -mr-0 -ml-3 px-3 py-3 text-5xl;
+  }
 }
 
 .prose h2::before {
