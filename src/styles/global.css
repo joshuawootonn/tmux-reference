@@ -189,7 +189,7 @@ button:focus-visible {
 }
 
 .group-of-shortcuts {
-  @apply grid grid-cols-1 gap-y-4 sm:grid-cols-2;
+  @apply grid grid-cols-1 gap-y-4 sm:grid-cols-[2fr_3fr];
 }
 
 .dark .footer-pattern {
