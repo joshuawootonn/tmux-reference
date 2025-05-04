@@ -30,7 +30,7 @@ export function CodeBlock({ children }: { children: ReactNode }) {
       {children}
       <button
         className={cn(
-          "absolute top-3 right-2",
+          "absolute top-2.5 right-1",
           "text-symbol mx-1 font-mono text-sm opacity-0 transition-none duration-150 ease-in-out group-hover:opacity-100 group-hover:transition-opacity focus:opacity-100",
           isCopied && "opacity-100",
         )}
