@@ -177,6 +177,7 @@
 
 summary:focus-visible,
 a:focus-visible,
+pre:focus-visible,
 button:focus-visible {
   @apply focus-visible:ring-ring outline-none focus-visible:ring-[1.5px];
 }
