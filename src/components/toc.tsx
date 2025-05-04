@@ -105,6 +105,14 @@ export function FloatingTableOfContent({ headings }: { headings: Headings }) {
                   animate="open"
                   exit="closed"
                   transition={{ duration: 0.1 }}
+                  onClick={(e) => {
+                    if (!(e.target instanceof HTMLElement)) return;
+
+                    const isLink = e.target.nodeName === "A";
+                    const isWithinLink = e.target.closest("a") != null;
+
+                    if (isLink || isWithinLink) setOpen(false);
+                  }}
                   onAnimationStart={() => {
                     overflow.set("hidden");
                   }}
