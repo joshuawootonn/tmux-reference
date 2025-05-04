@@ -1,16 +1,27 @@
 import { cn } from "@/lib/utils";
-import { motion } from "motion/react";
+import * as PopoverPrimitive from "@radix-ui/react-popover";
+import { AnimatePresence, motion, useMotionValue } from "motion/react";
 import { useCallback, useRef, useState } from "react";
 import { ThemeToggle } from "./theme-toggle";
+import {
+  Popover,
+  PopoverAnchor,
+  PopoverContent,
+  PopoverTrigger,
+} from "./ui/popover";
 type Heading = { depth: number; slug: string; text: string };
 type Headings = Heading[];
 
 function HeadingPlaceholder({ heading }: { heading: Heading }) {
   if (heading.depth == 2) {
-    return <div className="bg-sidebar-foreground/60 h-[1px] w-3" />;
+    return (
+      <div className="bg-sidebar-foreground/60 h-[1.5px] w-3 rounded-lg" />
+    );
   }
 
-  return <div className="bg-sidebar-secondary/60 ml-1 h-[1px] w-3" />;
+  return (
+    <div className="bg-sidebar-secondary/60 ml-1 h-[1.5px] w-3 rounded-lg" />
+  );
 }
 
 function Heading({ heading }: { heading: Heading }) {
@@ -30,107 +41,97 @@ function Heading({ heading }: { heading: Heading }) {
 }
 
 export function FloatingTableOfContent({ headings }: { headings: Headings }) {
-  const [open, _setOpen] = useState(false);
-  const justClosed = useRef(false);
-
-  const setOpen = useCallback(
-    (next: boolean, { delayReopen } = { delayReopen: false }) => {
-      if (!next && open && delayReopen) {
-        _setOpen(next);
-
-        justClosed.current = true;
-        const id = setTimeout(() => {
-          justClosed.current = false;
-        }, 600);
-
-        return () => clearTimeout(id);
-      } else if (next && !open && justClosed.current) {
-        //noop
-      } else {
-        _setOpen(next);
-      }
-    },
-    [open],
-  );
+  const [open, setOpen] = useState(false);
+  const overflow = useMotionValue("auto");
 
   return (
-    <div className="fixed top-1/2 left-1 z-50 hidden -translate-y-1/2 sm:flex sm:flex-col sm:space-y-2">
-      <ThemeToggle />
-      <motion.nav
-        initial="closed"
-        onFocus={() => {
-          return setOpen(true);
-        }}
-        onPointerMove={() => {
-          return setOpen(true);
-        }}
-        onPointerEnter={() => {
-          return setOpen(true);
-        }}
-        onPointerOut={(e) => {
-          // Don't fire for children elements
-          if (e.currentTarget !== e.target) return;
-          return setOpen(false);
-        }}
-        onPointerLeave={() => {
-          return setOpen(false);
-        }}
-        onClick={(e) => {
-          return setOpen(false, { delayReopen: true });
-        }}
-        animate={open ? "open" : "closed"}
-        className="not-prose group"
-      >
-        <motion.div
-          variants={{
-            open: { scale: 1.5 },
-            closed: { scale: 1 },
+    <div className="fixed top-[max(min(50%,_calc(100%_-_440px)),_116px)] left-1 z-50 hidden -translate-y-1/2 sm:flex sm:flex-col sm:space-y-2">
+      <ThemeToggle
+        dropdownContentProps={{ align: "start", side: "top", alignOffset: 0 }}
+      />
+      <Popover open={open} onOpenChange={(next) => setOpen(next)}>
+        <motion.nav
+          animate={open ? "open" : "closed"}
+          className="not-prose group"
+          onAnimationStart={() => {
+            overflow.set("hidden");
           }}
-          transition={{ duration: 0.1 }}
-          style={{
-            originX: 0,
+          onAnimationComplete={() => {
+            overflow.set("auto");
           }}
-          className="bg-background border-border relative z-0 space-y-2 border-2 px-3 py-3"
         >
-          {/* <div className="absolute inset-0 -mx-10 -mb-10"></div> */}
-          {headings.map((heading) => (
-            <HeadingPlaceholder heading={heading} />
-          ))}
-        </motion.div>
-        <motion.div
-          variants={{
-            open: {
-              display: "block",
-              opacity: 1,
-              scale: 1,
-              x: 0,
-            },
-            closed: {
-              opacity: 0,
-              scale: 0.9,
-              x: -5,
-              transitionEnd: { display: "none" },
-            },
-          }}
-          transition={{ duration: 0.1 }}
-          style={{ originX: 0 }}
-          className="bg-background border-border absolute top-1/2 z-0 -translate-y-1/2 space-y-0.5 border-2 px-4 py-3"
-        >
-          <div className="absolute inset-0 -z-10 -m-10"></div>
-          {headings.map((heading) => (
-            <a
-              className={cn(
-                "block scroll-ps-30 text-[15px] whitespace-nowrap",
-                heading.depth === 3 && "ml-3",
-              )}
-              key={heading.slug}
-              href={`#${heading.slug}`}
+          <PopoverAnchor></PopoverAnchor>
+          <PopoverTrigger asChild>
+            <motion.button
+              variants={{
+                open: { scale: 1.5 },
+                closed: { scale: 1 },
+              }}
+              transition={{ duration: 0.1 }}
+              style={{
+                originX: 0,
+                originY: 0,
+              }}
+              className="bg-background border-border relative z-0 space-y-2 border-2 px-3 py-3"
             >
-              <Heading heading={heading} />
-            </a>
-          ))}
-        </motion.div>
-      </motion.nav>
+              {headings.map((heading) => (
+                <HeadingPlaceholder key={heading.slug} heading={heading} />
+              ))}
+            </motion.button>
+          </PopoverTrigger>
+
+          <AnimatePresence>
+            {open && (
+              <PopoverContent
+                className="max-h-[calc(100vh_-_60px)]"
+                align="start"
+                asChild
+                forceMount={true}
+              >
+                <motion.div
+                  variants={{
+                    open: {
+                      opacity: 1,
+                      scale: 1,
+                      x: 0,
+                    },
+                    closed: {
+                      opacity: 0,
+                      scale: 0.9,
+                      x: -5,
+                    },
+                  }}
+                  initial="closed"
+                  animate="open"
+                  exit="closed"
+                  transition={{ duration: 0.1 }}
+                  onAnimationStart={() => {
+                    overflow.set("hidden");
+                  }}
+                  onAnimationComplete={() => {
+                    overflow.set("auto");
+                  }}
+                  style={{ originX: 0, originY: 0, overflow }}
+                >
+                  <div className="absolute inset-0 -z-10 -mx-10 -mb-10"></div>
+                  {headings.map((heading) => (
+                    <a
+                      className={cn(
+                        "block scroll-ps-30 text-[15px] whitespace-nowrap",
+                        heading.depth === 3 && "ml-3",
+                      )}
+                      key={heading.slug}
+                      href={`#${heading.slug}`}
+                    >
+                      <Heading heading={heading} />
+                    </a>
+                  ))}
+                </motion.div>
+              </PopoverContent>
+            )}
+          </AnimatePresence>
+        </motion.nav>
+      </Popover>
     </div>
   );
 }

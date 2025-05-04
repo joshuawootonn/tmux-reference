@@ -8,8 +8,13 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import type { DropdownMenuContentProps } from "@radix-ui/react-dropdown-menu";
 
-export function ThemeToggle() {
+export function ThemeToggle({
+  dropdownContentProps = { align: "start", side: "bottom", alignOffset: 0 },
+}: {
+  dropdownContentProps: DropdownMenuContentProps;
+}) {
   const [theme, setThemeState] = React.useState<
     "theme-light" | "dark" | "system"
   >("theme-light");
@@ -28,7 +33,7 @@ export function ThemeToggle() {
   }, [theme]);
 
   return (
-    <DropdownMenu>
+    <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="icon">
           <Sun className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
@@ -36,7 +41,7 @@ export function ThemeToggle() {
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="start" side="top" alignOffset={0}>
+      <DropdownMenuContent {...dropdownContentProps}>
         <DropdownMenuItem onClick={() => setThemeState("theme-light")}>
           Light
         </DropdownMenuItem>
