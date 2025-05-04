@@ -1,8 +1,8 @@
 import { cn } from "@/lib/utils";
 
-import { useCallback, useState } from "react";
+import { useCallback, useState, type ReactNode } from "react";
 
-export function Tmux({ children }: { children: string }) {
+export function CodeBlock({ children }: { children: ReactNode }) {
   const [isCopied, setCopied] = useState(false);
 
   const copy = useCallback(() => {
@@ -16,6 +16,7 @@ export function Tmux({ children }: { children: string }) {
   return (
     <div
       onClick={(e) => {
+        console.log("hi");
         const content = e.currentTarget.textContent;
 
         if (content == null || content.length === 0)
@@ -24,14 +25,13 @@ export function Tmux({ children }: { children: string }) {
         navigator.clipboard.writeText(content);
         copy();
       }}
-      className="not-prose group bg-background border-border flex w-full items-center justify-between border-[1.5px] text-left"
+      className="group relative"
     >
-      <code className="before:text-symbol bg-background truncate border-none p-[0.2em_0.4em] text-base font-normal before:mr-[3px] before:content-[':'] after:hidden">
-        {children}
-      </code>
+      {children}
       <button
         className={cn(
-          "text-symbol mx-1 font-mono text-sm opacity-0 transition-none duration-150 ease-in-out group-hover:opacity-100 group-hover:transition-opacity focus:opacity-100 focus:transition-opacity",
+          "absolute top-3 right-2",
+          "text-symbol mx-1 font-mono text-sm opacity-0 transition-none duration-150 ease-in-out group-hover:opacity-100 group-hover:transition-opacity focus:opacity-100",
           isCopied && "opacity-100",
         )}
         onClick={(e) => {

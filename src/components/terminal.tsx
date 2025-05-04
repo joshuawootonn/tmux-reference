@@ -30,7 +30,7 @@ export function Terminal({ children }: { children: string }) {
       </code>
       <button
         className={cn(
-          "text-symbol mx-1 font-mono text-sm opacity-0 transition-opacity duration-150 ease-in-out group-hover:opacity-100 focus:opacity-100",
+          "text-symbol mx-1 font-mono text-sm opacity-0 transition-none duration-150 ease-in-out group-hover:opacity-100 group-hover:transition-opacity focus:opacity-100 focus:transition-opacity",
           isCopied && "opacity-100",
         )}
         onClick={(e) => {

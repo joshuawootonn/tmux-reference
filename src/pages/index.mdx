@@ -8,6 +8,7 @@ author: Josh Wootonn
 import { Tmux as M } from "../components/tmux.tsx";
 import { Keyboard as K } from "../components/keyboard.tsx";
 import { Terminal as T } from "../components/terminal.tsx";
+import { CodeBlock } from "../components/code-block.tsx";
 import { Code } from "astro:components";
 
 <section>
@@ -16,7 +17,7 @@ import { Code } from "astro:components";
 
 ### Create and delete
 
-<div class="group-of-shortcuts ">
+<div class="group-of-shortcuts">
 
 Create new session
 
@@ -573,6 +574,8 @@ If in doubt, <a href="https://github.com/tmux/tmux/wiki/Getting-Started">getting
 
 ### Config
 
+<CodeBlock client:load>
+
 <Code lang="sh" code={`\# Remove the ugly green default background.
 set -g status-style bg=default
 
@@ -603,6 +606,8 @@ bind % split-window -h -c "#{pane_current_path}"
 bind s choose-tree -sZ -O index
 
 `}/>
+
+</CodeBlock>
 
 ### Keybindings
 
