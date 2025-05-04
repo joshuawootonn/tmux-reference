@@ -97,6 +97,24 @@
   }
 }
 
+.prose h1 a,
+.prose h2 a,
+.prose h3 a {
+  @apply no-underline;
+}
+
+.prose h1 a:hover,
+.prose h2 a:hover,
+.prose h3 a:hover {
+  @apply underline decoration-[1.5px];
+}
+
+.prose h1 a:focus-visible,
+.prose h2 a:focus-visible,
+.prose h3 a:focus-visible {
+  @apply ring-ring ring-offset-background underline decoration-[1.5px] ring-offset-2 outline-none;
+}
+
 .prose h2::before {
   @apply absolute top-0 -right-3 -bottom-3 -left-0 -z-20 border-2 border-[var(--border)] bg-black/80;
 

@@ -2,6 +2,8 @@
 import { defineConfig, envField } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import mdx from "@astrojs/mdx";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeSlug from "rehype-slug";
 
 import react from "@astrojs/react";
 
@@ -19,8 +21,13 @@ export default defineConfig({
       priority: 0.7,
       lastmod: new Date("2025-04-20"),
     }),
-    mdx(),
     react(),
+    mdx({
+      rehypePlugins: [
+        rehypeSlug,
+        [rehypeAutolinkHeadings, { behavior: "wrap" }],
+      ],
+    }),
   ],
   env: {
     schema: {
