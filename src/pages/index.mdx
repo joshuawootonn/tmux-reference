@@ -571,135 +571,106 @@ I'm not a TMUX expert too, so I was hesitant to include my config as I'm not an 
 That said I want to help you learn if I can. If you have tips for making this section better, email me.
 If in doubt, <a href="https://github.com/tmux/tmux/wiki/Getting-Started">getting started official guide</a> is probably a good place to start.
 
-<Code lang="sh" code={`# General config ----------------------------------------------------
+### Config
 
-# Remove the ugly green default background.
-
+<Code lang="sh" code={`\# Remove the ugly green default background.
 set -g status-style bg=default
 
-# Move the status bar to the top, since my nvim status bar is usually at the bottom.
-
+\# Move the status bar to the top, since my nvim status bar is usually at the bottom.
 set-option -g status-position top
 
-# Enable mouse pane navigation and resizing.
-
+\# Enable mouse pane navigation and resizing.
 set -g mouse on
 
-# Set window and pane indexes. They default is 0.
-
-# Jokes aside this is easier for navigation since 0 is on the other side of your keyboard.
-
+\# Set window and pane indexes. They default is 0.
+\# Jokes aside this is easier for navigation since 0 is on the other side of your keyboard.
 set -g base-index 1
 set-window-option -g pane-base-index 1
 
-# Enable window renumbering. Deleting windows can leave gaps in the indexes.
-
-# This option occationally adjusts window numbers so there are no gaps.
-
-#
-
-# Panes renumber automatically. \`prefix + q\` to see pane numbers.
-
+\# Enable window renumbering. Deleting windows can leave gaps in the indexes.
+\# This option occationally adjusts window numbers so there are no gaps.
+\# Panes renumber automatically. \`prefix + q\` to see pane numbers.
 set-option -g renumber-windows on
 
-# Set new panes to open in current directory
-
+\# Set new panes to open in current directory
 bind c new-window -c "#{pane_current_path}"
 bind '"' split-window -c "#{pane_current_path}"
 bind % split-window -h -c "#{pane_current_path}"
 
-# Change default options for choose-tree (\`prefix + s\`) to use index ordering.
-
-#
-
-# This is helpful for knowing the order of your sessions,
-
-# which is used for going to the next/prev session.
-
+\# Change default options for choose-tree (\`prefix + s\`) to use index ordering.
+\# This is helpful for knowing the order of your sessions,
+\# which is used for going to the next/prev session.
 bind s choose-tree -sZ -O index
 
-# General keybindings -----------------------------------------------
+`}/>
 
-# Setup \`ctrl + b, r\` to reload tmux config.
+### Keybindings
 
+<Code lang="sh" code={`\# Setup \`ctrl + b, r\` to reload tmux config.
 unbind r
 bind r source-file ~/.tmux.conf
 
-# Clear buffer history.
-
+\# Clear buffer history.
 bind-key -n C-l send-keys C-l \; send-keys -R \; clear-history
 
-# Vim navigation ----------------------------------------------------
+\# Vim navigation ----------------------------------------------------
 
-# Enable vi like keybindings for navigating the buffer of a window.
-
+\# Enable vi like keybindings for navigating the buffer of a window.
 set-window-option -g mode-keys vi
 
-# Configure \`v\` and \`y\` to start and capture selection in copy mode.
-
+\# Configure \`v\` and \`y\` to start and capture selection in copy mode.
 bind-key -T copy-mode-vi 'v' send -X begin-selection
 bind-key -T copy-mode-vi 'y' send -X copy-selection-and-cancel
 
-# Setup vim style pane selection (prefix + h/j/k/l).
-
+\# Setup vim style pane selection (prefix + h/j/k/l).
 bind h select-pane -L
 bind j select-pane -D
 bind k select-pane -U
 bind l select-pane -R
 
-# Setup vim style windows selection (atl + shift + right/left).
-
+\# Setup vim style windows selection (atl + shift + right/left).
 bind -n M-H previous-window
 bind -n M-L next-window
 
-# Arrow bindings (an alternative to vim) ----------------------------
+\# Arrow bindings (an alternative to vim) ----------------------------
 
-# Use Alt-arrow keys without prefix key (-n) to switch panes.
-
+\# Use Alt-arrow keys without prefix key (-n) to switch panes.
 bind M-Left select-pane -L
 bind M-Right select-pane -R
 bind M-Up select-pane -U
 bind M-Down select-pane -D
 
-# Use Shift-arrow keys without prefix (-n) key to switch windows.
-
+\# Use Shift-arrow keys without prefix (-n) key to switch windows.
 bind -n S-Left previous-window
 bind -n S-Right next-window
 
-# Plugins (optional) ------------------------------------------------
+`}/>
 
-#
+### Plugins
 
-# Follow installation here: https://github.com/tmux-plugins/tpm
+Follow the [installation guide](https://github.com/tmux-plugins/tpm) for TMUX Plugin Manager.
 
-set -g @plugin 'tmux-plugins/tpm'
+<Code lang="sh" code={`set -g @plugin 'tmux-plugins/tpm'
 
-# A sensible default package widely used by the community.
-
+\# A sensible default package widely used by the community.
 set -g @plugin 'tmux-plugins/tmux-sensible'
 
-# Vim style \`ctrl + h/j/k/l\` navigation that works seemlessly between vim and tmux.
-
+\# Vim style \`ctrl + h/j/k/l\` navigation that works seemlessly between vim and tmux.
 set -g @plugin 'christoomey/vim-tmux-navigator'
 
-# Improved copying from within TMUX
-
-# Not totally sure what all this one does, but it will escape ansi code.
-
+\# Improved copying from within TMUX
+\# Not totally sure what all this one does, but it will escape ansi code.
 set -g @plugin 'tmux-plugins/tmux-yank'
 
-# Save and restore your session through system restarts.
-
+\# Save and restore your session through system restarts.
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 
-# Configure and use a great minimal status bar.
-
+\# Configure and use a great minimal status bar.
 bind-key b set-option status
 set -g @minimal-tmux-status "top"
 set -g @plugin 'niksingh710/minimal-tmux-status'
 
-# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf).
-
+\# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf).
 run '~/.tmux/plugins/tpm/tpm'`}/>
 
 </section>
