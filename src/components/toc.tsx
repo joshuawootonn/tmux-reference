@@ -72,7 +72,7 @@ export function FloatingTableOfContent({ headings }: { headings: Headings }) {
                 originX: 0,
                 originY: 0,
               }}
-              className="bg-background border-border relative z-0 space-y-2 border-2 px-3 py-3"
+              className="bg-background border-border relative z-0 space-y-[7px] border-2 px-3 py-3"
             >
               {headings.map((heading) => (
                 <HeadingPlaceholder key={heading.slug} heading={heading} />
