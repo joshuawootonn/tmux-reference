@@ -1,6 +1,5 @@
 import * as React from "react";
-import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
-import { ChevronRightIcon } from "lucide-react";
+import { Menu as DropdownMenuPrimitive } from "@base-ui-components/react/menu";
 
 import { cn } from "@/lib/utils";
 
@@ -31,20 +30,29 @@ function DropdownMenuTrigger({
 
 function DropdownMenuContent({
   className,
-  sideOffset = 4,
+  positionerProps: {className: positionerClassName, sideOffset = 8 , ...positionerProps} = {},
   ...props
-}: React.ComponentProps<typeof DropdownMenuPrimitive.Content>) {
+}: React.ComponentProps<typeof DropdownMenuPrimitive.Popup> & {
+  positionerProps?: React.ComponentProps<
+    typeof DropdownMenuPrimitive.Positioner
+  >;
+}) {
   return (
     <DropdownMenuPrimitive.Portal>
-      <DropdownMenuPrimitive.Content
-        data-slot="dropdown-menu-content"
+      <DropdownMenuPrimitive.Positioner
+        className={cn("z-50", positionerClassName)}
         sideOffset={sideOffset}
-        className={cn(
-          "bg-background text-popover-foreground z-50 max-h-(--radix-dropdown-menu-content-available-height) min-w-[8rem] origin-(--radix-dropdown-menu-content-transform-origin) overflow-x-hidden overflow-y-auto border-2 p-1",
-          className,
-        )}
-        {...props}
-      />
+        {...positionerProps}
+      >
+        <DropdownMenuPrimitive.Popup
+          data-slot="dropdown-menu-content"
+          className={cn(
+            "bg-background text-popover-foreground min-w-[8rem] overflow-x-hidden overflow-y-auto border-2 p-1",
+            className,
+          )}
+          {...props}
+        />
+      </DropdownMenuPrimitive.Positioner>
     </DropdownMenuPrimitive.Portal>
   );
 }
@@ -80,52 +88,6 @@ function DropdownMenuItem({
   );
 }
 
-function DropdownMenuSub({
-  ...props
-}: React.ComponentProps<typeof DropdownMenuPrimitive.Sub>) {
-  return <DropdownMenuPrimitive.Sub data-slot="dropdown-menu-sub" {...props} />;
-}
-
-function DropdownMenuSubTrigger({
-  className,
-  inset,
-  children,
-  ...props
-}: React.ComponentProps<typeof DropdownMenuPrimitive.SubTrigger> & {
-  inset?: boolean;
-}) {
-  return (
-    <DropdownMenuPrimitive.SubTrigger
-      data-slot="dropdown-menu-sub-trigger"
-      data-inset={inset}
-      className={cn(
-        "focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground flex cursor-default items-center px-2 py-1.5 text-sm outline-hidden select-none data-[inset]:pl-8",
-        className,
-      )}
-      {...props}
-    >
-      {children}
-      <ChevronRightIcon className="ml-auto size-4" />
-    </DropdownMenuPrimitive.SubTrigger>
-  );
-}
-
-function DropdownMenuSubContent({
-  className,
-  ...props
-}: React.ComponentProps<typeof DropdownMenuPrimitive.SubContent>) {
-  return (
-    <DropdownMenuPrimitive.SubContent
-      data-slot="dropdown-menu-sub-content"
-      className={cn(
-        "bg-popover text-popover-foreground z-50 min-w-[8rem] origin-(--radix-dropdown-menu-content-transform-origin) overflow-hidden border p-1 shadow-lg",
-        className,
-      )}
-      {...props}
-    />
-  );
-}
-
 export {
   DropdownMenu,
   DropdownMenuPortal,
@@ -133,7 +95,4 @@ export {
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuSub,
-  DropdownMenuSubTrigger,
-  DropdownMenuSubContent,
 };

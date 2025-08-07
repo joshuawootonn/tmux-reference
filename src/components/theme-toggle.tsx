@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Moon, Sun } from "lucide-react";
+import { Menu as DropdownMenuPrimitive } from "@base-ui-components/react/menu";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -8,13 +9,13 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import type { DropdownMenuContentProps } from "@radix-ui/react-dropdown-menu";
 
 export function ThemeToggle({
-  dropdownContentProps = { align: "start", side: "bottom", alignOffset: 0 },
+  positionerProps = { align: "start", side: "bottom", alignOffset: 0 },
 }: {
-  dropdownContentProps: DropdownMenuContentProps;
-}) {
+  positionerProps?: React.ComponentProps<typeof DropdownMenuPrimitive.Positioner>;
+} = {}) {
+  
   const [theme, setThemeState] = React.useState<
     "theme-light" | "dark" | "system"
   >("theme-light");
@@ -34,14 +35,16 @@ export function ThemeToggle({
 
   return (
     <DropdownMenu modal={false}>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon">
-          <Sun className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
-          <Moon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
-          <span className="sr-only">Toggle theme</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent {...dropdownContentProps}>
+      <DropdownMenuTrigger
+        render={(props) => (
+          <Button variant="outline" size="icon" {...props}>
+            <Sun className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
+            <Moon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
+            <span className="sr-only">Toggle theme</span>
+          </Button>
+        )}
+      />
+      <DropdownMenuContent positionerProps={positionerProps}>
         <DropdownMenuItem onClick={() => setThemeState("theme-light")}>
           Light
         </DropdownMenuItem>
